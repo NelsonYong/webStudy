@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>mode</title>
+</head>
+
+<body>
+  <div id="app">
+    <!-- 只想改某一个插槽的内容的时候 加上slot属性，填写插槽的名称-->
+    <cpn><span slot="middle">标题</span></cpn>
+   
+  </div>
+
+  <template id="cpn">
+  
+    <div>
+      <!-- 给起名字，以便于插入的内容可以区分 -->
+      <slot name="left"><span>左边</span></slot>
+      <slot name="middle"><span>中间</span></slot>
+      <slot name="right"><span>右边</span></slot>
+    </div>
+  </template>
+
+  <script src="../Js/vue.js"></script>
+  <script>
+    const app = new Vue({
+      el: '#app', //管理元素
+      data: {
+
+      },
+      components: {
+        cpn: {
+          template: '#cpn',
+        }
+      },
+      methods: {}
+    })
+  </script>
+</body>
+
+</html>

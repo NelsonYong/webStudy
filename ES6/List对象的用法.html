@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+</head>
+
+<body>
+
+  <script>
+    function person(name, age) {
+      this.name = name
+      this.age = age
+      return {
+        name: this.name,
+        age: this.age
+      }
+    }
+    let list = new Array()
+    list.push(new person("yangjie", 18))
+    list.push(new person("hhh", 11))
+    list.push(new person("ttt", 25))
+    list.push(new person("yyy", 34))
+    console.log(list)
+
+    //进行年龄从小到大排序   //有改变数组结构
+    const res = list.sort((a, b) => {
+      return b.age - a.age
+    })
+    console.log(res)
+
+    //some方法，检测是否有元素符合条件
+    const flag = list.some(v => {
+      return v.age > 10
+    })
+    console.log(flag)
+  </script>
+
+</body>
+
+</html>

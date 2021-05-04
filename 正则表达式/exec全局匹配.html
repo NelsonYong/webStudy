@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+</head>
+
+<body>
+  <h1>杨杰</h1>
+  <h2>yangjie</h2>
+  <h1>yangjie.com</h1>
+
+</body>
+
+
+<script>
+  function search(str, regs) {
+    let result = []
+    console.log(str)
+    while ((res = regs.exec(str))) {
+      result.push(res)
+    }
+    return result
+  }
+
+  let test = search(document.body.innerHTML, /<(h[1-6])>([\s\S]+?)<\/\1>/gi)
+  console.log(test)
+  // let name = "yayngjie"
+  // let regs = /y/gi
+  // console.log(regs.exec(name))
+  // console.log(regs.exec(name))
+</script>
+
+</html>

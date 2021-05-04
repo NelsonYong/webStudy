@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>mode</title>
+</head>
+<body>
+
+<!-- v-for补充，获取索引值 -->
+<div id="app">
+  <li v-for="(item,index) in mes":key="item">{{index}}、{{item}}</li>
+</div>
+
+<!-- 如果要插入元素 针对数组可以使用app.mes.splice(第几个开始,个数,'字符串')  当个数不为0的时候会删除，
+  当想在指定位置插入数据的时候，个数设为0，后面加字符串即可吗-->
+
+<script src="../Js/vue.js"></script>
+<script>
+  const app= new Vue({
+    el:'#app',//管理元素
+    data:{
+      mes:['aaa','bbb','ccc','ddd']
+    }
+  })   
+</script>
+</body>
+</html>

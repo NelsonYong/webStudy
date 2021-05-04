@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>Document</title>
+  <script src="../Js/vue.js"></script>
+</head>
+
+<body>
+  <div id="app">
+    <!--与大括号的区别是，v-text会直接将标签里面的值覆盖掉，不会与标签里面的值拼接-->
+    <h1 v-text="mes"></h1>
+  </div>
+
+  <script>
+    //创建Vue实例,得到 ViewModel
+    const app = new Vue({
+      el: "#app",
+      data: {
+        mes: "hiii",
+      }
+    })
+  </script>
+</body>
+
+</html>

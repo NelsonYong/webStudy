@@ -1,0 +1,343 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>demo</title>
+  <link rel='stylesheet' href='./css/base.css'>
+
+  <style>
+    .header {
+      width: 100%;
+      height: 69px;
+      font-size: 25px;
+      text-align: center;
+      font-weight: 600;
+      /* background-color: #2d2d2d; */
+      color: black;
+      background: url('./img/fan4.jpg') no-repeat;
+      background-position: left;
+
+    }
+
+    .header span {
+      line-height: 69px;
+      height: 69px;
+
+    }
+
+    .content {
+      width: 100%;
+    }
+
+    .tab {
+      width: 25%;
+      line-height: 49px;
+      text-align: center;
+      position: absolute;
+      top: 69px;
+      left: 0px;
+      padding: 0;
+    }
+
+    .tab_ {
+      width: 25%;
+
+      line-height: 49px;
+      text-align: center;
+      position: fixed;
+      top: 0;
+      left: 0px;
+
+    }
+
+    .tab-item {
+      height: 49px;
+      width: 100%;
+      background-color: white;
+      border: 1px solid #e1e1e1;
+      color: #8a8787;
+    }
+
+    .tab-item span {
+      line-height: 49px;
+      font-size: 15px;
+      font-weight: 600;
+      width: 100%;
+      height: 100%;
+    }
+
+    .context {
+      width: 70%;
+      /* background-color: blue; */
+      line-height: 20px;
+      position: absolute;
+      top: 69px;
+      left: 25%;
+      right: 5%;
+      padding-left: 5px;
+      padding-right: 5px;
+    }
+
+    .context-item {
+      word-wrap: break-word;
+      word-break: break-all;
+      overflow: hidden;
+      padding: 3px;
+      border-bottom: 1px solid #e1e1e1;
+      height: auto;
+      width: 100%;
+
+    }
+
+    .active_tab {
+      color: black;
+      background-color: #e1e1e1;
+    }
+
+    .img {
+      width: 80%;
+      height: 185px;
+      margin: 0 auto;
+      overflow: hidden;
+      border-radius: 15px;
+
+
+    }
+
+    .img img {
+      width: 100%;
+
+    }
+
+    .other {
+      display: flex;
+      width: 100%;
+      justify-content: center;
+    }
+
+    .tab-item-name,
+    .tab-item-price {
+      font-weight: 600;
+      margin: 3px;
+    }
+  </style>
+</head>
+
+<body>
+  <div class="header">
+    <span id="hearder-span">我是标题</span>
+  </div>
+  <div class="content">
+    <div class="tab" id="tab">
+    </div>
+    <div class="context" id="context">
+    </div>
+  </div>
+
+
+
+
+  <script src="./js/data.js"></script>
+  <script>
+    let tab = document.getElementById('tab')
+
+     
+    
+    //动态创建tab标签
+    const data = getData()
+    const contextData = getContext()
+    const title = GetTitle()
+
+    //设置标题
+    document.title = title.broT
+    document.getElementById('hearder-span').innerHTML = title.mT
+
+
+    CreateEl(data.length)
+
+    function CreateEl(length) {
+      for (let index = 0; index < length; index++) {
+        CreateTab(index)
+        CreateContext(index)
+      }
+
+    }
+
+    function CreateTab(index) {
+      const div = document.createElement('div')
+      div.className = 'tab-item'
+      const span = document.createElement('span')
+      span.innerHTML = data[index].title
+      div.appendChild(span)
+      tab.appendChild(div)
+
+    }
+
+    function CreateContext(index) {
+      let context_ = document.getElementById('context')
+
+      const div_item = document.createElement('div')
+      const other = document.createElement('div')
+      const other_name = document.createElement('div')
+      const other_price = document.createElement('div')
+      const span = document.createElement('span')
+      const span1 = document.createElement('span')
+      const img_item = document.createElement('div')
+      const img = document.createElement('img')
+      div_item.className = 'context-item'
+
+      img_item.className = 'img'
+      img.src = contextData[index].imgUrl
+      img_item.appendChild(img)
+
+      other.className = 'other'
+      span.innerHTML = contextData[index].name
+      other_name.className = 'tab-item-name'
+      other_name.appendChild(span)
+
+      span1.innerHTML = contextData[index].price + '￥'
+      other_price.className = 'tab-item-price'
+      other_price.appendChild(span1)
+
+      other.appendChild(other_name)
+      other.appendChild(other_price)
+
+      div_item.appendChild(img_item)
+      div_item.appendChild(other)
+
+      context_.appendChild(div_item)
+
+    }
+  </script>
+  <script>
+    window.onload = window.onreadystatechange = function () {
+      if (!this.readyState || this.readyState == 'loaded' || this.readyState == 'complete') {
+
+        //保存元素y位置
+        let posArr = []
+        //点击tab切换防抖
+        let flag = true
+        //获取父元素
+
+        //获取tab长度
+        let tab_Length = data.length
+
+        //获取context父元素
+        let context = document.getElementById('context')
+        console.log(context)
+
+        //设置屏幕高度  context父元素高度+屏幕高度-context最后一个子元素的高度
+        context.style.height = (context.offsetHeight + window.screen.height - context.children[tab_Length - 1]
+          .offsetHeight + 50) + 'px';
+
+        //获取子元素context的高度
+        getHeight()
+
+        //默认第一个活跃样式
+        let active_index = 0
+        tab.children[active_index].className = 'tab-item active_tab'
+
+        //监听tab点击
+        for (let index = 0; index < tab_Length; index++) {
+          tab.children[index].onclick = function () {
+            flag = false
+            setTimeout(() => {
+              flag = true
+            }, 500);
+            console.log(index)
+            targetH = getScrollTop()
+            //清除样式
+            clearTabActive()
+            //活跃样式
+            this.className = "tab-item active_tab"
+
+            active_index = index
+
+            window.scrollTo({
+              top: posArr[active_index] + 5,
+              behavior: "smooth"
+            });
+
+          }
+        }
+
+        //监听滚动条滑动
+        window.addEventListener("scroll", (e) => {
+          const scrollTop = getScrollTop()
+          if (flag) {
+            getScrollWithTargetDomPosition(context.children[active_index], active_index)
+          }
+          //定位tab的方式
+          if (scrollTop > 69) {
+            if (active_index != 0)
+              tab.className = 'tab_'
+            else {
+              tab.className = 'tab'
+            }
+          } else {
+
+            tab.className = 'tab'
+          }
+        })
+
+        //获取滚动条的位置
+        function getScrollTop() {
+          var scrollPos;
+          if (window.pageYOffset) {
+            scrollPos = window.pageYOffset;
+          } else if (document.compatMode && document.compatMode != 'BackCompat') {
+            scrollPos = document.documentElement.scrollTop;
+          } else if (document.body) {
+            scrollPos = document.body.scrollTop;
+          }
+          return scrollPos;
+        }
+
+        //清除样式
+        function clearTabActive() {
+          let tab = document.getElementById('tab')
+          let tab_Length = tab.getElementsByClassName('tab-item').length
+          for (let index = 0; index < tab_Length; index++) {
+            tab.children[index].className = "tab-item"
+          }
+
+        }
+
+        //获取元素高
+        function getHeight() {
+          const allEl = context.getElementsByClassName('context-item')
+          for (let index = 0; index < allEl.length; index++) {
+
+            posArr.push(context.children[index].getBoundingClientRect().y + 6)
+          }
+          console.log(posArr)
+
+        }
+
+        function getScrollWithTargetDomPosition(el, index) {
+          const scrollTop = getScrollTop() - 69
+          const arr = posArr.filter(v => {
+            return scrollTop > v
+          })
+
+          active_index = arr.length
+          // console.log(arr.length)
+          if (active_index === -1) {
+            active_index = 0
+          }
+          //console.log(active_index)
+          clearTabActive()
+          tab.children[active_index].className = 'tab-item active_tab'
+
+        }
+
+      }
+      window.onload = window.onreadystatechange = null
+    }
+  </script>
+
+</body>
+
+</html>

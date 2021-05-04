@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+</head>
+
+<body>
+
+  <script>
+    //匹配除换行符之外的全部字符
+    //   url = `
+    //  yangjie.com
+    //  hhhh
+    //  `
+    //   console.log(url.match(/.+/s))
+
+    let tel = "010 - 999999"
+    console.log(tel.match(/\d+(\s-\s)\d+/))
+    console.log(tel.match(/[^\s]+/g).join(""))
+  </script>
+
+</body>
+
+</html>

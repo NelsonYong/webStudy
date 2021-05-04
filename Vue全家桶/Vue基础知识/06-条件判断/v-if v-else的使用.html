@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>mode</title>
+</head>
+<body>
+<!-- 建议直接在js里面判断，然后通过变量直接赋值 -->
+<div id="app">
+  <!-- <h1 v-if="isActive==0">{{k}}</h1>
+  <h1 v-else-if="isActive==1">{{k1}}</h1>
+  <h1 v-else-if="isActive==2">{{k1}} {{k2}}</h1>
+  <h1 v-else>{{k2}}</h1> -->
+
+  <!-- 通过计算属性来写 -->
+  <h1>{{result}}</h1>
+</div>
+
+<script src="../Js/vue.js"></script>
+<script>
+  const app= new Vue({
+    el:'#app',//管理元素
+    data:{
+      k:'666',
+      k1:'777',
+      k2:'888',
+      isActive:2
+    },
+    computed: {
+      result(){
+        let mes=''
+        if(this.isActive==1){
+          mes='666'
+        }
+        else if(this.isActive==1){
+          mes='777'
+        }
+        else if(this.isActive==2){
+          mes='777888'
+        }
+        else{
+          mes=888
+        }
+        return mes
+      }
+    }
+  })   
+</script>
+</body>
+</html>

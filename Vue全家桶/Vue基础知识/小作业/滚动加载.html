@@ -1,0 +1,45 @@
+<!DOCTYPE html><html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>div滚动到底部加载</title>
+</head>
+<style>
+    .scrollDiv{
+        width: 500px;
+        height: 400px;
+        margin: 10px auto;
+        background-color: #ff0000;
+        overflow-y: scroll;
+        padding: 10px;
+    }
+</style>
+<body>
+    <div class="scrollDiv" id="testDiv">
+        <br/><br/><br/><br/><br/>
+        <br/><br/><br/><br/><br/>
+        <br/><br/><br/><br/><br/>
+        <br/><br/><br/><br/><br/>
+        <br/><br/><br/><br/><br/>
+        <br/><br/><br/><br/><br/>
+        <br/><br/><br/><br/><br/>
+        <br/><br/><br/><br/><br/>
+        <br/><br/><br/><br/><br/>
+    </div>
+</body>
+<script>
+    var divscroll = document.getElementById('testDiv');
+    function divScroll() {
+        var wholeHeight = divscroll.scrollHeight;
+        var scrollTop = divscroll.scrollTop;
+        var divHeight = divscroll.clientHeight;
+        if(scrollTop + divHeight >= wholeHeight){
+            alert('滚动到底部了！');  
+            //这里写动态加载的逻辑，比如Ajax请求后端返回下一个页面的内容
+        }
+        if(scrollTop == 0){
+            alert('滚动到头部了！');
+        }
+    }
+    divscroll.onscroll = divScroll;
+</script>
+</html>

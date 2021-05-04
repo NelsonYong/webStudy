@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Mode</title>
+    <script src="../JS/react.development.js"></script>
+    <script src="../JS/react-dom.development.js"></script>
+    <script src="../JS/babel.min.js"></script>
+
+    <style>
+      .content {
+        padding-left: 40%;
+      }
+    </style>
+  </head>
+
+  <body>
+    <div id="app"></div>
+
+    <script type="text/babel">
+      class App extends React.Component {
+        constructor(props) {
+          super(props);
+          this.state = {};
+        }
+
+        render() {
+          return (
+            <div className="content">
+              <table>
+                <thead>
+                  <th></th>
+                  <th>书籍名称</th>
+                  <th>出版日期</th>
+                  <th>价格</th>
+                  <th>购买数量</th>
+                  <th>操作</th>
+                </thead>
+                <tbody></tbody>
+              </table>
+            </div>
+          );
+        }
+      }
+
+      //将App这个对象映射到id=‘app’这个dom节点上，虚拟dom映射到真实的dom节点上去，避免频繁的修改真实dom,造成运行效率低下，
+      //修改真实dom很难对其状态进行跟踪
+
+      //虚拟dom可以通过一次性将全部内容映射到真实dom,一次性可以全部渲染出来，大大提升了程序运行效率
+      ReactDOM.render(<App />, document.getElementById("app"));
+    </script>
+  </body>
+</html>

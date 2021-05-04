@@ -1,0 +1,97 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>mode</title>
+</head>
+<body>
+<div id="app">
+  <ti :cnumber="number"></ti>
+  <add @item-add="btnadd"></add>
+  <reduce @item-reduce="btnreduce" :num="number"></reduce>
+</div>
+
+<template id="ti">
+  <h2>当前计数为:{{cnumber}}</h2>
+</template>
+
+<template id="add">
+  <button @click="addclick">{{add}}</button>
+</template>
+
+<template id="reduce">
+  <button @click="reduceclick" v-bind:disabled="num<=0">{{reduce}}</button>
+</template>
+
+
+<script src="../Js/vue.js"></script>
+<script>
+  
+  //头部标题组件
+  const ti={
+    template:'#ti',
+    props: {
+      cnumber:{
+        default:0
+      }
+    }
+  }
+
+  const add={
+    template:'#add',
+    data () {
+      return {
+        add:'增加+1'
+      }
+    },
+    methods: {
+      addclick(){
+        this.$emit("item-add")
+        
+      }
+    }
+  }
+
+  const reduce={
+    template:'#reduce',
+    data () {
+      return {
+        reduce:'减少-1',
+        isactive:true
+      }
+    },
+    methods: {
+      reduceclick(){
+        this.$emit("item-reduce")
+      }
+    },
+    props: ['num']
+  }
+
+
+
+  const app= new Vue({
+    el:'#app',//管理元素
+    data:{
+      mes:'666',
+      number:0
+     
+    },
+    components: {
+      ti,
+      add,
+      reduce
+    },
+    methods: {
+      btnadd(){
+        this.number++
+      },
+      btnreduce(){
+        this.number--
+      }
+    }
+  })   
+</script>
+</body>
+</html>

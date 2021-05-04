@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+</head>
+
+<body>
+
+
+  <script>
+    let data = `
+     #1 语文-主修课程,200元 #
+     #2 数学-主修课程,300元 #
+     #2 体育-选秀课程,100元 #
+    `
+    let lesson = data.match(/\s*#\d+.+\s+#$/gm).map(v => {
+      v = v.replace(/\s*#\d+\s*/, "").replace(/\s*#/, "")
+      let [projects, price] = v.split(",")
+      console.log(projects)
+      let [project, type] = projects.split("-")
+      return {
+        project,
+        type,
+        price
+      }
+    })
+    // console.log(JSON.stringify(lesson,null,2) )
+    console.log(lesson)
+  </script>
+
+</body>
+
+</html>

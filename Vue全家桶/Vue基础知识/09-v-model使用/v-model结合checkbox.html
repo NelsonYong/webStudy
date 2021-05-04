@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>mode</title>
+</head>
+<body>
+<div id="app">
+
+<label for="chinese">
+  <input type="checkbox" value="语文"  v-model="mes" id="chinese" >语文
+</label>
+
+<label for="math">
+  <input type="checkbox" value="数学"   v-model="mes" id="math">数学
+</label>
+
+<label for="english">
+  <input type="checkbox" value="英语"   v-model="mes" id="english">英语
+</label>
+
+<!-- <button v-bind:disabled="!mes">下一步</button> -->
+
+<h2>您选择的是:<!-- {{mes}} -->
+  <ul><li v-for="item in mes">{{item}}</li></ul>
+</h2>
+
+</div>
+
+
+<script src="../Js/vue.js"></script>
+<script>
+  const app= new Vue({
+    el:'#app',//管理元素
+    data:{
+      //mes:false
+      //isActive:true
+      mes:[],
+    }
+  })   
+</script>
+</body>
+</html>

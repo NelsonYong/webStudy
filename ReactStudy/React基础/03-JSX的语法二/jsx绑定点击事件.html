@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>Mode</title>
+  <script src="../JS/react.development.js"></script>
+  <script src="../JS/react-dom.development.js"></script>
+  <script src="../JS/babel.min.js"></script>
+</head>
+
+<body>
+  <div id="app"></div>
+
+  <script type="text/babel">
+    class App extends React.Component{
+    constructor(props){
+      super(props)
+      this.state={
+        name:'yangjie',
+        count:100
+      }
+
+
+      //已经绑定this了
+      this.btn=this.btn.bind(this)
+    }
+
+
+    render(){
+      return(<div>
+        {/*三种绑定this的方案 
+        第一种 bind(this) 显示绑定  不推荐
+        第二种 定义函数时使用箭头函数，赋值函数，不推荐，看起来别扭，尽量统一使用function函数类型
+
+        第三种 在标签里面写函数进行隐式绑定
+      
+      */}
+        <button onClick={this.btn}>按钮</button>
+        <button onClick={this.add}>+1</button>
+        <button  onClick={()=>{
+          {/*将箭头函数的this绑定在函数上    推荐*/}
+         this.reduce()
+        }}>reduce</button>
+        </div>)
+    }
+
+    btn(){
+      console.log("点击了按钮")
+      // console.log(this)
+
+      console.log(this.state.name)
+    }
+   add=()=>{
+     console.log(this.state.count)
+   }
+
+   reduce(){
+    this.state.count--
+    console.log(this.state.count)
+   }
+  }
+
+
+  ReactDOM.render(<App />,document.getElementById('app'))
+</script>
+</body>
+
+</html>

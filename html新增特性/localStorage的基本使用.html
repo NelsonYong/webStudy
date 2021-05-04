@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+</head>
+
+<body>
+
+  <script>
+    // localStorage类似与cookie存储数据,比cookie大，cookie为4k,它为5M或更多,关闭窗口后数据一直存在
+ if(!window.localStorage){
+   alert("浏览器不支持")
+ }else{
+   let data={
+     name:"yangjie",
+     age:18,
+     height:175
+   }
+  //  转为字符串保存
+   window.localStorage.setItem('userlist',JSON.stringify(data));
+
+
+   //读取数据
+   console.log(JSON.parse(window.localStorage.getItem('userlist')))
+
+   //也可通过键值获取数据
+
+   //清除数据
+   window.localStorage.clear()
+ }
+  </script>
+
+</body>
+
+</html>

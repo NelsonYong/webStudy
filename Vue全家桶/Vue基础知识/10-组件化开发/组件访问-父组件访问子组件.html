@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>mode</title>
+</head>
+
+<body>
+  <div id="app">
+    <cpn></cpn>
+    <cpn></cpn>
+    <cpn ref="uu"></cpn>
+    <button @click="btnClick">按钮</button>
+
+  </div>
+
+  <template id="cpn">
+    <div>{{mes}}</div>
+  </template>
+
+  <script src="../Js/vue.js"></script>
+  <script>
+    const app = new Vue({
+      el: '#app', //管理元素
+      data: {
+
+      },
+      components: {
+        cpn: {
+          template: '#cpn',
+          data() {
+            return {
+              mes: "这是一个子组件"
+            }
+          },
+          methods: {
+            showmes(){
+              console.log(this.mes);
+            }
+          }
+
+        }
+      },
+      methods: {
+        btnClick() { 
+          //1.可以直接获取到该vue实例下的所有子组件  但想拿某一个组件的时候，会通过下标值来拿
+          //当下标值频繁改变或者中间插值的时候，下标值就不可取
+          //this.$children[0].showmes()
+
+          //2.$refs 通过在父组件中的子组件标签中加入ref这个属性键值进行数据的获取
+         
+          console.log( this.$refs.uu.mes);
+        }
+      }
+    })
+  </script>
+</body>
+
+</html>

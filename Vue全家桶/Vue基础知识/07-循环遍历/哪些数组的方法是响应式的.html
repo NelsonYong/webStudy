@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>mode</title>
+</head>
+<body>
+
+<!-- v-for补充，获取索引值 -->
+<div id="app">
+  <li v-for="item in mes">{{item}}</li>
+  <button @click="btnClick">按钮</button>
+</div>
+
+<script src="../Js/vue.js"></script>
+<script>
+  const app= new Vue({
+    el:'#app',//管理元素
+    data:{
+      mes:['aaa','bbb','ccc','ddd']
+    },
+    methods: {
+      btnClick(){
+        //1.push方法
+        //this.mes.push('aaa')
+
+        //2.pop方法（从数组最后一位删除）
+        // this.mes.pop()
+
+          //3.shift方法（从数组首位删除）
+        // this.mes.shift()
+
+         //4.unshift方法（从数组首位添加元素）
+        //this.mes.unshift(666)
+        
+
+        //**通过索引值修改数组是不能做到响应式的
+        // this.mes[0]='bbbb'
+      }
+    }
+  })   
+</script>
+</body>
+</html>

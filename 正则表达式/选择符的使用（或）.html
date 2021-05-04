@@ -1,0 +1,22 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+</head>
+
+<body>
+
+
+  <script>
+    let val = "010-9999999"
+    // |为或运算，(为原子组，如果不加原子组，则只是判断010或者020是否成立，后面的完全被忽略了，原子组是把两者看出一个整体)
+    let patter = /^(010|020)\-\d{7,8}$/
+    console.log(patter.test(val))
+  </script>
+
+</body>
+
+</html>

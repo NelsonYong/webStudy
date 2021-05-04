@@ -1,0 +1,105 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>mode</title>
+</head>
+<body>
+<div id="app">{{mes}}</div>
+
+<script src="../Js/vue.js"></script>
+<script>
+  const app= new Vue({
+    el:'#app',//管理元素
+    data:{
+      mes:'666'
+    }
+  })
+  
+
+  //    filter\map\reduce这三个高阶函数
+  //    使用filter的时候的要求：必须要返回一个布尔值。n
+  //    当为true的时候，函数内部会自动将n放到一个新的数组当中
+  //    当为false的时候，函数内部会过滤掉这次的n
+  const num=[10,20,333,41,111,25]
+  let newnum = num.filter(function(n){
+    return n<=100    //过滤返回
+  })
+  console.log(newnum);
+
+//2.map函数的使用/对每一个数组值进行操作
+let newnum1=num.map(function(n){
+  return n*2
+})
+console.log(newnum1);
+
+//3.reduce的使用
+//对数组中所有内容进行汇总 函数需要传两个值，第一个值preValue为前一个值，后面的Value为当前遍历的值
+let newnum2=num.reduce(function(preValue,Value){
+   return preValue+Value
+},0)
+//以数据汇总为例子
+//第一次，0为遍历数组第一个时候的前一个值初始化为0   preValue 0   Value 10
+//第二次的 preValue是前一次的 return的值，后面的Value为当前遍历的第二个数组。preValue 上一个的preValue+Value(0+10)     Value 20
+console.log(newnum2);
+
+
+//函数链式编程
+// let total=num.filter(function(n){
+//   return n<=100
+// }).map(function(n){
+//   return n*2
+// }).reduce(function(pre,v){
+//   return pre+v
+// },0)
+// console.log(total);
+
+
+//超简单的箭头是函数编程
+let total=num.filter(n=> n<=100).map(n=> n*2).reduce((pre,n)=> pre+n)
+console.log(total)
+
+
+let books=[
+      {
+        id:1,
+        name:"滑稽论",
+        date:'2020-1-1',
+        price:85.00,
+        count:1
+      },
+      {
+        id:2,
+        name:"搞笑王子",
+        date:'2020-1-2',
+        price:95.00,
+        count:1
+      },
+      {
+        id:3,
+        name:"逗比公主",
+        date:'2020-1-3',
+        price:80.00,
+        count:1
+      },
+      {
+        id:4,
+        name:"痴情国王",
+        date:'2020-1-4',
+        price:75.00,
+        count:1
+      }
+    ]
+//针对有对象的遍历
+//例子是08-购书案例获取总价格
+// let allPrice=books.reduce(function(pre,book){
+//         return pre+book.count*book.price
+// },0)
+
+//箭头函数实现
+let allPrice=books.reduce((pre,book)=> pre+book.count*book.price,0)
+console.log(allPrice);
+</script>
+</body>
+</html>

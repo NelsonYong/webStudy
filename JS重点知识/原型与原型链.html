@@ -1,0 +1,122 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>原型和原型链</title>
+</head>
+
+<body>
+
+  <script>
+    //原型
+    // function Person(age) {
+    //   this.age = age
+    // }
+
+    // function Person1(age) {
+    //   this.age = age
+    // }
+    //这个name就是调用Person的构造函数所创建的实例原型
+    // Person.prototype.name = "yangjie"
+
+    // console.log(person.__proto__ === Person.prototype); // true  __proto__指向的对象的原型
+    // console.log(Person===Person.prototype.constructor)  //true   constructor指向构造函数
+
+
+    //给实例化出来的a一个属性，再给Person添加实例原型，当实例对象属性存在时，输出改属性值，如果不存，则查找实例原型对象
+    // Person.prototype.height=165
+    // const a=new Person()
+    // a.height=175
+    // delete a.height
+    // console.log(a.name)
+    // console.log(a.height)
+
+
+
+    //原型链 先查找对象，不存在再查找原型，再不存在再往上查找原型，一直到最顶层
+   
+   // 1.构造函数
+function Dog(name){
+  this.name = name
+  this.action = function(msg){
+    console.info(msg)
+  }
+}
+
+// 2.使用构造函数Dog创建的实例对象
+var xiaohua = new Dog('小花')
+// 实例对象xiaohua可以使用构造函数中的属性、方法
+console.info(xiaohua.name) // 小花
+var xiaohei = new Dog('小黑')
+xiaohei.action('摇尾巴') // 摇尾巴
+
+// 3.直接使用构造函数中的方法，每个实例对象中方法都会复制一份，造成内存浪费
+// 如下两个实例对象相同的方法不相等
+console.info(xiaohua.action === xiaohei.action) // false
+
+// 4.使用原型
+// 每一个构造函数均有一个prototype属性，该属性是一个对象，其所有方法和属性都被构造函数所拥有，
+// 因此，可以把不变的属性和方法定义在prototype对象上，所有的实例都可以共享这些属性和方法
+
+// 给构造函数Dog的原型添加属性和方法
+Dog.prototype.favourite = '骨头'
+Dog.prototype.barking = function (){
+  console.info('汪汪汪...')
+}
+// 实例中可以直接使用
+console.info(xiaohua.favourite) // 骨头
+// 而且原型中的方法是共享的
+console.info(xiaohua.barking === xiaohei.barking) // true
+
+// 5.构造函数的原型对象和实例的关系
+// 每个实例对象都有一个__proto__属性（原型），指向构造函数的原型对象prototype，所以实例对象可以使用构造函数原型中的方法
+console.info(xiaohua.__proto__ === Dog.prototype) // true
+
+// 实例对象可以使用方法：1.自身拥有的方法，2.顺着__proto__找到的构造函数prototype的方法
+
+
+// 6.原型对象prototype和构造函数的关系
+// 原型对象prototype有constructor属性，该属性为构造函数本身
+console.info(Dog.prototype.constructor === Dog) // true
+// 有因为实例对象的__proto__等于构造函数的prototype，所以每个实例的__proto__.constructor即是构造函数
+console.info(xiaohua.__proto__.constructor === Dog) // true
+console.info(xiaohei.__proto__.constructor === Dog) // true
+
+// 通过实例的__proto__.constructor属性可以明确是由哪个构造函数创建出来的
+
+//7.特殊情况需要手动把constructor属性指回来
+// 如重新给prototype赋值，会造成constructor丢失
+Dog.prototype = {
+  barking: function (){
+    console.info('汪汪汪...')
+  }
+}
+// 因为重新给Dog.prototype赋值了一个对象
+console.info(Dog.prototype.constructor === Dog) // false
+
+// 手动把constructor属性指回来
+Dog.prototype = {
+  constructor: Dog,
+  barking: function (){
+    console.info('汪汪汪...')
+  }
+}
+console.info(Dog.prototype.constructor === Dog) // true
+
+// 8.原型对象(prototype)的原型(__proto__)
+// 原型对象也是对象，因此也因该有原型，即Dog.prototype.__proto__
+// 而这个原型对象的原型(Dog.prototype.__proto__)是Object构造函数的原型对象
+console.info(Dog.prototype.__proto__ === Object.prototype) // true
+// 也即是这个原型对象的原型的constructor属性(Dog.prototype.__proto__.constructor)为Object
+console.info(Dog.prototype.__proto__.constructor === Object) // true
+//这个原型对象的原型 的原型是null
+console.info(Dog.prototype.__proto__.__proto__)  // null
+
+// 以上即是原型链
+  </script>
+
+</body>
+
+</html>

@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+</head>
+<body>
+  
+
+  <script>        
+  var ws= new WebSocket('ws://localhost:3000')
+
+  //监听建立新连接‘
+  ws.onopen=res=>{
+    console.log("连接成功")
+    console.log(res)
+  }
+
+  //监听新的消息
+  ws.onmessage=res=>{
+    console.log("有新消息")
+    console.log(res)
+  }
+
+  //监听错误
+  ws.onerror=res=>{
+    console.log("连接异常")
+    console.log(res)
+  }
+
+  //监听关闭
+  ws.onclose=res=>{
+    console.log("服务端关闭连接")
+    console.log(res)
+  }
+  </script>
+</body>
+</html>

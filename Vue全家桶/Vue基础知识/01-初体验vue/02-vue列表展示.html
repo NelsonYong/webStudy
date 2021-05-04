@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>列表展示</title>
+</head>
+
+<body>
+  <div id="app">
+    <ul>
+      <li v-for="item in test">{{item}}</li>
+    </ul>
+
+  </div>
+
+
+  <script src="../Js/vue.js"></script>
+  <script>
+    const app = new Vue({
+      el: "#app",
+      data() {
+        return {
+          test: ['撒旦撒', '大苏打', '发放日']
+        }
+      }
+    })
+  </script>
+</body>
+
+</html>

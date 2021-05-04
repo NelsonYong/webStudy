@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+</head>
+<body>
+
+  <script>
+    let data=`
+    <div>6666</div>
+    <h1>sdushd</h1>
+   
+    `
+
+    let pa=/<(h[1-6])>([\s\S]*)<\/\1>/ig
+    console.log(data.match(pa))
+    //原子组取$2
+    console.log(data.replace(pa,`<p>$2</p>`))
+  </script>
+  
+</body>
+</html>

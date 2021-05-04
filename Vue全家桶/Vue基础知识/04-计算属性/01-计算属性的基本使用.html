@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <script src="../Js/vue.js"></script>
+</head>
+
+<body>
+<div id ="app">
+    <h1>{{fullname}}</h1>
+</div>
+
+<script>
+//创建Vue实例,得到 ViewModel
+const app = new Vue({
+  el:"#app",
+  data: {
+    mes:"hiii",
+    firstname:"666",
+    lastname:"777"
+    },
+    computed: {
+        fullname:function(){
+            return this.firstname+' '+this.lastname
+        }
+    }
+  })
+</script>
+</body>
+
+</html>

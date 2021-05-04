@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+</head>
+
+<body>
+
+
+  <script>
+    let map = new Map()
+    // map.set("key",value)
+    map.set("name", "小明")
+    map.set("age", 18)
+    map.set("height", 180)
+
+    console.log(map)
+    // map.get(key) 获取对象
+    // console.log(map.get("name"))
+
+    //遍历map的key,获取value值  一个参数默认是value,两参数则第一个value,第二个为key
+    map.forEach((value, key) => {
+      console.log(key, value)
+    });
+
+    //删除map
+    map.delete("name")
+    console.log(map)
+  </script>
+
+</body>
+
+</html>

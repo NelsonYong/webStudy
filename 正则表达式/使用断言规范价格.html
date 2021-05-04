@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+</head>
+
+<body>
+
+
+  <script>
+    let data = `
+    js,200元
+    php,180.00元
+    css,100元
+    `
+
+    let regs = /(\d+)(.00)?(?=元)/ig
+    let lesson = data.replace(regs, (v, ...args) => {
+      args[1] = args[1] || ".00"
+      args = args.splice(0, 2).join("")
+      return args
+    })
+
+    console.log(lesson)
+  </script>
+</body>
+
+</html>

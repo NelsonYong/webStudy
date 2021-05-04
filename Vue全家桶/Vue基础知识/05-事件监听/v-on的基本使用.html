@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>计数器</title>
+    <link href="../css/title.css" rel="stylesheet">
+    <style>
+      [v-cloak]{
+        display: none;
+      }
+    </style>
+</head>
+<body>
+    <div id="app" class="app" >
+       <div v-cloak>计数器：{{counter}}</div>
+        <button @click="add">+</button>
+        <button @click="reduce">-</button>
+    </div>
+
+    <script src="../Js/vue.js"></script>
+
+    <script>
+
+       let app=new Vue({
+           el:"#app",
+           data:{
+                   counter:0
+           },
+           methods: {
+               add(){
+                   this.counter++
+                   console.log(this.counter)
+
+               },
+               reduce(){
+                   if(this.counter>0) 
+                   this.counter--
+                   
+               }
+           },
+           
+       })
+
+    </script>
+</body>
+</html>

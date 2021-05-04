@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>mode</title>
+</head>
+<body>
+<div id="app">
+  <cpn2></cpn2>
+</div>
+
+
+<script src="../Js/vue.js"></script>
+<script>
+
+  //1.创建一个组件构造器对象（子组件）
+  const cpnC1 = Vue.extend({
+    template:  `<div>
+                 <h1>我是标题1：</h1>
+                 <h1>你好啊，哈哈哈</h1>
+                </div>`
+  })
+
+
+  //在第二个组件构造器中，注册第一个组件，即可在里面使用第一个组件（父组件）
+  //第二个组件在new vue中注册，显示在div中
+  const cpnC2 = Vue.extend({
+    template:  `<div>
+                 <h1>我是标题2：</h1>
+                 <h1>你好啊，哒哒哒</h1>
+                 <cpn1></cpn1>
+                </div>`,
+    components: {
+      cpn1:cpnC1
+    }
+  })
+
+  const app= new Vue({
+    el:'#app',//管理元素
+    data:{
+      mes:'666'
+    },
+    components: {
+      cpn2:cpnC2
+      
+    }
+  })   
+</script>
+</body>
+</html>

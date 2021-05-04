@@ -1,0 +1,93 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0,minimum-scale=0.5,maximum-scale=2.0,user-scalable=yes" />
+  <title>员工信息</title>
+  <link rel='stylesheet' href='css/layui.css'>
+  <link rel='stylesheet' href='css/tablecolor.css'>
+</head>
+
+<body>
+  <div id="app">
+    <tab></tab>
+  </div>
+
+
+  <template id='tab'>
+    <div>
+      <h3 style="text-align: center;">员工信息</h3>
+      <table class='layui-table'>
+        <thead>
+          <th></th>
+          <th>姓名</th>
+          <th>薪水</th>
+          <th>年龄</th>
+        </thead>
+        <tbody>
+          <tr v-for="(item,index) in cmes" v-bind:class="item.show?'color':''">
+            <td><input type="checkbox" v-bind:value="item.name" @click="check(index,$event)"/></td>
+            <td>{{item.name}}</td>
+            <td>{{item.money}}</td>
+            <td>{{item.age}}</td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+  </template>
+
+
+  <script src="js/vue.js"></script>
+  <script>
+    const app = new Vue({
+      el: '#app', //管理元素
+      data: {
+        mes: '666'
+      },
+      components: {
+        tab: {
+          template: '#tab',
+          data() {
+            return {
+              cmes: [{
+                  name: '张三',
+                  money: '20000',
+                  age: '23',
+                  show: true
+                },
+                {
+                  name: '李四',
+                  money: '10000',
+                  age: '26',
+                  show: false
+                },
+                {
+                  name: '王五',
+                  money: '12000',
+                  age: '25',
+                  show: false
+                },
+                {
+                  name: '马六',
+                  money: '26000',
+                  age: '21',
+                  show: false
+                }
+              ],
+
+            }
+          },
+          methods: {
+            check(index,event){
+              this.cmes[index].show=event.target.checked;
+              console.log(event.target.checked);
+            }
+          }
+        }
+      }
+    })
+  </script>
+</body>
+
+</html>

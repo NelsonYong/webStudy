@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>属性选择器</title>
+  <style>
+    /* 选择所有的title属性的那个元素 */
+    [title]{
+      color: red;
+    }
+
+    /* 属性和值要完全一直 */
+    [class="content"]{
+      background-color: blueviolet;
+    }
+  </style>
+</head>
+
+<body>
+ <h1 title="hello">Hello world</h1>
+ <h1 title="yangjie">yangjie</h1>
+</body>
+
+<div class="content">666</div>
+<div class="content1">777</div>
+
+</html>

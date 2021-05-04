@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>mode</title>
+</head>
+
+<body>
+  <div id="app">
+    <!-- 每一个标签可以使用不同的插槽 -->
+    <cpn><button>案例</button></cpn>
+    <cpn></cpn>
+    <cpn></cpn>
+  </div>
+
+  <template id="cpn">
+    <!-- 相同的东西，直接写在组件里，不一样的东西封装成插槽 -->
+    <div>
+      <h1>我是组件</h1>
+      <p>我是小组件</p>
+
+      <!-- 插槽，给组件预留插槽空间 -->
+      <slot></slot>
+    </div>
+  </template>
+
+  <script src="../Js/vue.js"></script>
+  <script>
+    const app = new Vue({
+      el: '#app', //管理元素
+      data: {
+
+      },
+      components: {
+        cpn: {
+          template: '#cpn',
+        }
+      },
+      methods: {}
+    })
+  </script>
+</body>
+
+</html>

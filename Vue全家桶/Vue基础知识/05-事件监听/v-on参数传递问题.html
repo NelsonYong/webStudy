@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>计数器</title>
+    <link href="../css/title.css" rel="stylesheet">
+    <style>
+      [v-cloak]{
+        display: none;
+      }
+    </style>
+</head>
+<body>
+    <div id="app" class="app" >
+      <!-- 传入自定义参数和屏幕鼠标位置参数的时候，鼠标位置参数要$event传入 -->
+      <!-- 传入参数不带括号的时候也可直接获取event -->
+        <button @click="add(123,$event)">+</button>
+        <button @click="reduce">-</button>
+    </div>
+
+    <script src="../Js/vue.js"></script>
+
+    <script>
+
+       let app=new Vue({
+           el:"#app",
+           data:{
+                   counter:0
+           },
+           methods: {
+               add(a,event){
+                  
+                   console.log('+++++++',a,event)
+
+               },
+               reduce(){
+                   console.log(event)
+               }
+           },
+           
+       })
+
+    </script>
+</body>
+</html>

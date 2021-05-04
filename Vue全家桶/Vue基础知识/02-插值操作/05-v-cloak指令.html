@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>Document</title>
+  <script src="../Js/vue.js"></script>
+  <style>
+    [v-cloak] {
+      display: none;
+    }
+  </style>
+</head>
+
+<body>
+  <div id="app">
+    <h1 v-html="url"></h1>
+  </div>
+
+  <script>
+    //创建Vue实例,得到 ViewModel
+
+    //v-cloak:如果页面还没渲染出大括号里面的值的时候，是不显示任何东西的。
+    setTimeout(function () {
+      const app = new Vue({
+        el: "#app",
+        data: {
+          mes: "hiii",
+          url: '<a href="http://www.baidu.com">百度一下</a>'
+        }
+      })
+
+
+    }, 1000)
+  </script>
+</body>
+
+</html>

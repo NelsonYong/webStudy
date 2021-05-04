@@ -1,0 +1,114 @@
+//导入
+// @import "typo.less";
+
+
+// 变量运算
+@color: red;
+@main-width: 500px;
+@main-height: @main-width/5+10px;
+
+//定义数组
+@colors:red,blue,green,black;
+
+//语法  .colors[color1]  混合（mixins）和规则集（rulesets）作为一组值的映射（map）
+// .colors {
+//   color1: red;
+//   color2: blue;
+//   color3: green;
+//   color4: black;
+//   primary: blue;
+// }
+
+div {
+  margin-top: 22px;
+ font-family: 'Wawati SC';
+}
+
+// 混合Mixin
+
+.border {
+  box-shadow: -10px 5px 5px red;
+}
+
+.main {
+  // background-color: .colors[color1];
+  background-color: extract(@colors,1);
+  width: @main-width;
+  height: @main-height;
+  .border()
+}
+
+
+//嵌套使用
+.main1 {
+  // background-color:.colors[color2];
+  background-color: extract(@colors,2);
+  width: @main-width;
+  height: @main-height;
+
+  .text {
+    font-size: 20px;
+  }
+}
+
+//转义
+
+@iphone-Width: ~"(max-width:1024)";
+
+//规则嵌套
+.main2 {
+  width: @main-width;
+  height: @main-height;
+  // background-color:.colors[color3];
+  background-color: extract(@colors,3);
+
+
+  //mixin分组混入，拿到。main1所嵌套的text类  //命名空间和访问符
+  .main1>.text;
+
+  @media screen and (max-width:768px) {
+    //运算
+    width: @main-width*(768px/1920px);
+    height: @main-height;
+    background-color: yellow;
+  }
+
+  @media screen and (@iphone-Width) {
+    width: @main-width*(1024px/1920px);
+    height: @main-height;
+
+  }
+
+
+}
+
+
+//作用域
+@color:red;
+.main3 {
+ 
+  width: @main-width;
+  height: @main-height;
+   
+  @color:white;
+  background-color:@color;//白色  
+
+}
+
+
+.main{
+  color: red;
+  background-color: antiquewhite;
+
+  .main1{
+    line-height: 60px;
+
+    #p{
+      font-weight: 600;
+
+      .item{
+        margin: 10px;
+      }
+    }
+  }
+}

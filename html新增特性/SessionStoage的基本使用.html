@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+</head>
+
+<body>
+
+  <script>
+    //只专注于当前窗口，窗口关闭无效
+    let data = {
+      name: "yangjie",
+      age: 18,
+      height: 175
+    }
+    sessionStorage.setItem('userdata', JSON.stringify(data)) //存值
+    // value是字符串， 如果想存入对象或数组， 则必须进行序列化成Json字符串；
+
+
+    // 通过解析json字符串成javascript值
+    console.log(JSON.parse(sessionStorage.getItem('userdata')))
+  </script>
+
+</body>
+
+</html>

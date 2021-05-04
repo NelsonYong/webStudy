@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+</head>
+
+<body>
+
+  <script>
+    let str = "yyanygjie123456"
+
+    //原子表[]匹配里面的单一字符
+    console.log(str.match(/[yj]+/g))
+
+
+  //  \1对应的是原子组里的匹配结果，这就要求两者需要一直
+    let date="2020-10-23"
+    console.log(date.match(/\d+([\/-])\d+\1\d+/))
+  </script>
+
+</body>
+
+</html>

@@ -1,0 +1,214 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>轮播图</title>
+  <style>
+    * {
+      margin: 0;
+      padding: 0;
+    }
+
+    /* 设置 outer的样式 */
+    #outer {
+      width: 520px;
+      height: 333px;
+      margin: 50px auto;
+      background-color: yellow;
+      padding: 10px 0;
+
+
+      position: relative;
+
+      /* 裁剪溢出内容 */
+      overflow: hidden;
+    }
+
+    #imgList {
+      /* 去除符号 */
+      list-style: none;
+      /* width:2080px; */
+      height: 100%;
+      position: absolute;
+
+      /* 每移动520px显示下一张 */
+      /* left: -520px; */
+
+    }
+
+    #imgList li {
+      float: left;
+      width: 500px;
+      height: 333px;
+      margin: 0 10px;
+    }
+
+    li img {
+      width: 100%;
+      height: 100%;
+    }
+
+    #nav {
+      position: absolute;
+      left: 50%;
+      bottom: 5%;
+      transform: translate(-50%, -5%);
+    }
+
+    #nav a {
+      display: block;
+      float: left;
+      width: 15px;
+      height: 15px;
+      text-align: center;
+      background-color: black;
+      margin: 0 5px;
+      opacity: 0.8;
+      filter: alpha(opacity=50);
+      margin-top: 10px;
+    }
+
+    #nav a:hover {
+      background-color: red;
+    }
+  </style>
+</head>
+
+<body>
+  <div id="outer">
+    <ul id="imgList">
+      <li>
+        <img src="./img/fan1.jpg" alt="">
+      </li>
+      <li>
+        <img src="./img/fan2.jpg" alt="">
+      </li>
+      <li>
+        <img src="./img/fan3.jpg" alt="">
+      </li>
+      <li>
+        <img src="./img/fan4.jpg" alt="">
+      </li>
+     
+    </ul>
+    <!-- 创建导航 -->
+    <div id="nav">
+      <!-- <a href="#"></a>
+      <a href="#"></a>
+      <a href="#"></a>
+      <a href="#"></a> -->
+    </div>
+  </div>
+
+  <script src="./move.js"></script>
+  <script>
+    var index_jilu = 0;
+    //获取图片的宽度
+    window.onload = function () {
+      //获取list
+      let imgList = document.getElementById('imgList')
+      //获取图片数量
+      let imgArr = imgList.getElementsByTagName('li')
+       
+      //克隆第一个元素
+      imgList.appendChild(imgList.children[0].cloneNode(true));
+      //设置宽高
+      imgList.style.width = imgArr.length * 500 + imgArr.length * 20 + 'px'
+
+    
+
+
+      //获取导航栏
+      let nav = document.getElementById('nav')
+      createA(imgArr)
+      //默认显示图片的索引
+      let index = 0
+      //获取所有的a
+      let a_All = nav.getElementsByTagName('a')
+      //默认显示第一张图片
+      a_All[index].style.backgroundColor = 'red'
+
+      //定义定时器
+      let timer
+
+      autoChange()
+
+      //点击超链接显示图片
+      //为所有的超链接绑定单击事件
+
+      for (let i = 0; i < a_All.length; i++) {
+
+        //给每个超链接对象绑定num
+        a_All[i].num = i
+        //绑定单击事件
+        a_All[i].onclick = function () {
+          //传入num
+          setA(this.num)
+          //修改left
+          //imgList.style.left = -1 * this.num * 520 + 'px'
+
+          //关闭定时器
+          clearInterval(timer)
+
+
+          //封装的轮播图函数   第一个为对象。第二个速度，第三个位置，第四个css属性，第五个回调函数
+          //根据图片间隔改变速度
+          move(imgList, (this.num > index_jilu ? this.num - index_jilu + 1 : index_jilu - this.num + 1) * 30, this
+            .num * -520, "left",
+            function () {
+              autoChange()
+            })
+          index_jilu = this.num
+          index = this.num
+        }
+      }
+
+      //开启自动切换
+      function autoChange() {
+        //开启一个定时器
+        timer= setInterval(function () {
+          index++
+          move(imgList, 30, index * -520, "left", function () {
+            setA(index)
+          })
+        }, 3000)
+      }
+
+      function createA(imgArr) {
+
+        for (let index = 0; index < imgArr.length - 1; index++) {
+          const el = document.createElement('a')
+          nav.append(el)
+
+        }
+
+      }
+
+
+      function setA(targetIndex) {
+
+        //判断当前索引是否是最后一张图片
+        if (index >= imgArr.length - 1) {
+          index = 0
+          //最后一张与第一张一模一样
+          imgList.style.left=0+'px'
+          targetIndex=index
+         
+        }
+        //循环修改
+        for (let i = 0; i < a_All.length; i++) {
+          if (targetIndex == i) {
+            a_All[i].style.backgroundColor = 'red'
+          } else {
+            a_All[i].style.backgroundColor = 'black'
+          }
+        }
+      }
+
+    }
+  </script>
+</body>
+
+</html>

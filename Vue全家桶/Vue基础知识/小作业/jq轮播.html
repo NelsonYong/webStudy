@@ -1,0 +1,85 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <title>轮播
+  </title>
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <link rel='stylesheet' href='css/lunbo.css'>
+</head>
+
+<body>
+
+  <div id="app" class="content">
+    <!--视图-->
+    <img :src="images[currentIndex].imgSrc"  class="img">
+    <br>
+    <button @click="prevHandler">上一张</button>
+    <button @click="nextHandler">下一张</button>
+  </div>
+
+  <script src="js/jquery.min.js"></script>
+  <script src='js/vue.js'></script>
+  <script>
+    let vm = new Vue({ 
+      el: "#app",
+      data() {
+        return {
+          images: [ 
+            {
+              id: 1,
+              imgSrc: "img/1.jpg"
+            },
+            {
+              id: 2,
+              imgSrc: "img/2.jpg"
+            },
+            {
+              id: 3,
+              imgSrc: "img/3.jpg"
+            },
+
+          ],
+          currentIndex: 0
+        }
+      },
+      methods: {
+
+        nextHandler(e) {
+          console.log(e);
+          this.currentIndex++;
+          if (this.currentIndex == 3) {
+            this.currentIndex = 0;
+          }
+        },
+
+        prevHandler(e) {
+
+
+          if (this.currentIndex == 0) {
+            this.currentIndex = 3;
+          }
+          console.log(e);
+          this.currentIndex--;
+        }
+
+      
+      },
+
+      created() {
+
+        setInterval(() => {
+          this.currentIndex++;
+          if (this.currentIndex == 3) {
+            this.currentIndex = 0;
+          }
+        }, 2500)
+      }
+    })
+  </script>
+
+
+</body>
+
+</html>

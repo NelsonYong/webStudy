@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+</head>
+<body>
+  <script>
+    
+    // 链式编程
+    // new Promise(参数（函数）)
+    new Promise((resolve, reject) => {
+      //第一次网络请求代码
+      setTimeout(() => {
+        resolve()
+      }, 1000)
+    }).then(() => {
+      //第一次处理代码
+      const data = 'Hello,World'
+      console.log(data)
+      console.log(data)
+      console.log(data)
+      console.log(data)
+
+      return new Promise((resolve, reject) => {
+
+        //第二次网络请求代码
+        setTimeout(() => {
+          resolve()
+        }, 1000)
+
+      }).then(() => {
+        //第二次处理代码
+        const data = 'Hello,World'
+        console.log(data)
+
+        return new Promise((resolve, reject) => {
+
+          //第三次网络请求代码
+          setTimeout(() => {
+            resolve()
+          }, 1000)
+
+        }).then(() => {
+          //第三次处理代码
+          const data = 'Hello,World'
+          console.log(data)
+        })
+
+      })
+
+    })
+
+
+
+  </script>
+  
+</body>
+</html>

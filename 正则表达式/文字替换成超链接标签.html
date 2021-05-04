@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+</head>
+
+<body>
+
+  <p>我热爱生活,生活因购物变得美好</p>
+
+</body>
+
+<script>
+  let el = document.querySelector("p")
+  let regs = /购物/g
+  el.innerHTML = el.innerHTML.replace(regs, "<a href='https://www.taobao.com'>$&</a>")
+  console.log(el)
+</script>
+
+</html>

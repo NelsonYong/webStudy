@@ -1,0 +1,196 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+
+  <style>
+    /* p标签除了里面的元素其他都生效 */
+    p:not(.p2, .content) {
+      background-color: red;
+    }
+
+    /* 全局使用的颜色 */
+    :root {
+      background-color: white;
+    }
+
+    #box1:target {
+      color: red;
+    }
+
+
+    #box2:target {
+      color: blue;
+    }
+
+    a {
+      display: block;
+      text-decoration: none;
+      color: black;
+    }
+
+    .ul1 li {
+      background-color: gray;
+    }
+
+    .ul1 li:target {
+      background-color: white;
+    }
+
+
+    .content p:first-child {
+      background-color: yellow;
+    }
+
+
+    .content p:last-child {
+      background-color: teal;
+    }
+
+    .conten1 p:nth-child(2) {
+      background-color: blue;
+    }
+
+    .conten1 p:nth-last-child(2) {
+      background-color: yellow;
+    }
+
+    .content3 li:first-of-type {
+      background-color: blueviolet;
+    }
+
+    .content3 li:last-of-type {
+      background-color: blueviolet;
+    }
+
+    .content4 li:nth-of-type(3) {
+      background-color: yellow;
+    }
+
+    .content4 li:nth-last-of-type(1) {
+      background-color: violet;
+    }
+
+    .content5,
+    .content6 {
+      width: 100px;
+      height: 100px;
+    }
+
+    .content5:empty {
+      background-color: black;
+    }
+
+    input:checked+span::after {
+      content: "666";
+    }
+
+
+    input[type="text"]:enabled {
+      border: 1px solid greenyellow;
+    }
+
+    input[type="text"]:enabled+span::after {
+      content: "可用";
+    }
+
+   
+
+    input[type="text"]:disabled  + span::after {
+      content: "禁用";
+    }
+  </style>
+
+</head>
+
+<body>
+  <h1>not伪类的使用</h1>
+  <p class="p1">1</p>
+  <p class="p2">2</p>
+  <p class="p3">3</p>
+
+  <h1>target伪类的使用</h1>
+  <a href="#box1">box1</a>
+  <a href="#box2">box2</a>
+
+  <div id="box1">我是盒子1</div>
+  <div id="box2">我是盒子2</div>
+
+  <h2>小demo</h2>
+  <h3>ProjectsList</h3>
+  <ul class="ul1">
+    <li id="li1"><a href="#li1">语文</a></li>
+    <li id="li2"><a href="#li2">数学</a></li>
+    <li id="li3"><a href="#li3">英语</a></li>
+    <li id="li4"><a href="#li4">物理</a></li>
+  </ul>
+
+  <h1>选择父元素的第一个元素和最后一个元素会受其他元素的影响</h1>
+  <div class="content">
+    <p>1第一个元素为黄色</p>
+    <p>2</p>
+    <p>3</p>
+    <p>4</p>
+    <p>5</p>
+    <p>6</p>
+    <p>7</p>
+    <p>8</p>
+    <p>9</p>
+    <p>10最后一个元素为绿色</p>
+  </div>
+
+  <h1>nth伪类的使用</h1>
+  <div class="conten1">
+    <p>1</p>
+    <p>第二个为蓝色</p>
+    <p>3</p>
+    <p>倒数第二个为黄色</p>
+    <p>5</p>
+  </div>
+
+
+  <h1>选择匹配到的第一个元素不受其他元素的影响</h1>
+  <div class="content3">
+    <span>这是一个表格</span>
+    <ul class="ul2">
+      <li>匹配到的第一个li为紫色</li>
+      <li>2</li>
+      <li>3</li>
+      <li>4</li>
+      <li>匹配到最后的一个也为紫色</li>
+    </ul>
+  </div>
+
+  <h1>不受其他元素的影响的选择指定的元素</h1>
+  <div class="content4">
+    <ul>
+      <li>我是第1个</li>
+      <li>我是第2个</li>
+      <li>我是第3个</li>
+      <li>我是第4个</li>
+      <li>我是第5个</li>
+    </ul>
+  </div>
+
+  <h1>匹配空元素</h1>
+  <div class="content5"></div>
+  <div class="content6">1321</div>
+
+  <h1>匹配用户界面上处于选中状态的元素E</h1>
+  <label for="chinese">语文：</label><input type="checkbox"><span></span>
+  <label for="math">数学：</label><input type="checkbox"><span></span>
+
+
+  <h1>input的可用和不可用状态</h1>
+  <input type="text"><span></span>
+  <input type="text"><span></span>
+  <input type="text" disabled="disabled"><span></span>
+  <input type="text" disabled="disabled"><span></span>
+
+
+</body>
+
+</html>

@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>this指向问题</title>
+</head>
+
+<body>
+
+
+  <script>
+  //  this全是指向块级作用域的，指向window对象
+    let name = '程新松';
+    let obj = {
+      id: 201102304,
+      fn: function () {
+        console.log(this.name); //undefined
+        console.log(this.id); //201102304
+      }
+    }
+    obj.fn();
+
+
+    // 箭头函数的this指向,指向上一层的作用域寻找
+    let obj1={
+      name:"yangjie",
+      fn:function(){
+        setTimeout(()=>{
+          console.log(this.name)
+        }, 500);
+
+      }
+    }
+
+    obj1.fn()
+    
+  </script>
+
+</body>
+
+</html>

@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>Mode</title>
+  <script src="../Js/vue.js"></script>
+</head>
+
+<body>
+
+  <div id="app">
+
+    <cpn>
+      <template slot-scope="data">
+        <!-- 化成字符串，连接中间 -->
+        <span >{{data.data.join('-')}}</span>
+      </template>
+
+    </cpn>
+  </div>
+
+  <template id="cpn">
+    <!-- 当想改变默认插槽的时候，可以通过:变量="里面是组件的数据" 即可在父组件中使用 ，在父组件中要加template   提示，slot不能作为根组件，应该包一层div-->
+    <div>
+      <slot :data="lau">
+        <ul>
+          <li v-for="(item,index) in lau">{{item}}</li>
+        </ul>
+      </slot>
+    </div>
+
+  </template>
+  <script>
+    //创建Vue实例,得到 ViewModel
+    const app = new Vue({
+      el: '#app',
+      data: {
+        mes: "hi",
+      },
+      components: {
+        cpn: {
+          template: '#cpn',
+          data() {
+            return {
+              lau: ['JavaScript', 'C++', 'Python', 'C#']
+            }
+          }
+        }
+      }
+    });
+  </script>
+</body>
+
+</html>

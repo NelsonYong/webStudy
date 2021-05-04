@@ -1,0 +1,86 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=
+   initial-scale=1.0">
+  <title>transform的基本使用</title>
+  <style>
+    .context {
+      display: flex;
+      justify-content: space-between;
+    }
+    .context:nth-of-type(n){
+      margin: 50px;
+    }
+
+    .box1,
+    .box2,
+    .box3,
+    .box4,
+    .box5 {
+      width: 200px;
+      height: 200px;
+      background-color: red;
+    }
+
+    .box1:hover {
+      transform: rotate(-45deg);
+      -webkit-transform: rotate(-45deg);
+
+    }
+
+    .box2:hover {
+      /* 第一个参数是横坐标，第二个为纵坐标 */
+      transform: translate(100px, 0px);
+      -webkit-transform: translate(100px, 0px);
+    }
+
+    .box3:hover {
+
+      transform: scale(0.5);
+      -webkit-transform: scale(0.5);
+    }
+
+    .box4:hover {
+      /* 第一个参数是横坐标，第二个为纵坐标 */
+      transform: skew(0, 20deg)
+    }
+
+    .box5:hover{
+      /*transform: matrix(水平缩小0.8倍,水平拉伸0,垂直拉伸0,垂直缩小0.8倍,水平偏移10px,垂直偏移10px)*/
+      transform: matrix(0.8,0,0,0.8,10,10);
+    }
+  </style>
+</head>
+
+<body>
+  <div class="context">
+    <div>
+      <h1>旋转</h1>
+      <div class="box1"></div>
+    </div>
+    <div>
+      <h1>移动</h1>
+      <div class="box2"></div>
+    </div>
+    <div>
+      <h1>缩放</h1>
+      <div class="box3"></div>
+    </div>
+
+    <div>
+      <h1>倾斜</h1>
+      <div class="box4"></div>
+    </div>
+
+    <div>
+      <h1>矩阵</h1>
+      <div class="box5"></div>
+    </div>
+  </div>
+
+</body>
+
+</html>

@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=
+  , initial-scale=1.0">
+  <title>Document</title>
+</head>
+<body>
+
+
+  <script>
+
+   
+   let userid='440223199808020935'
+   let regs=/([1-9]{1}[0-9]{16}[1-9]{1})|(\d{4})(\*{10})(\d{4})/
+  //  let test=  userid.replace(regs,(p,p1,p2,p3)=>{
+  //      return p1+'**********'+p3
+  //    })
+  //    console.log(test)
+
+  console.log(regs.test(userid))
+    //console.log(userid.substring(4,14))
+    // console.log(userid.replace(userid.substring(4,14),'*********'))
+  </script>
+  
+</body>
+</html>

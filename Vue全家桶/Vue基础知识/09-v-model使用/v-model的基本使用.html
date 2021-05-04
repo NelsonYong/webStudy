@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>mode</title>
+</head>
+<body>
+
+  <!-- 数据的双向绑定 -->
+<div id="app">
+<input type="text" v-model="mes">
+  {{mes}}</div>
+
+
+<script src="../Js/vue.js"></script>
+<script>
+  const app= new Vue({
+    el:'#app',//管理元素
+    data:{
+      mes:'666'
+    }
+  })   
+</script>
+</body>
+</html>

@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>转义字符的理解</title>
+</head>
+
+<body>
+
+
+  <script>
+    let url = "https://www.yangjie.com"
+    let patter = /https?:\/\/\w+\.\w+\.\w{2,3}$/
+    console.log(patter.test(url))
+
+    let aa="dhasuihdui 2010gdfgsd 2562sd fsdfsdf2626"
+    console.log(aa.match(/\d+/g))
+  </script>
+</body>
+
+</html>

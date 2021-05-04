@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <script src="../Js/vue.js"></script>
+</head>
+
+<body>
+<div id ="app">
+    <h1>{{allPrice}}</h1>
+</div>
+
+<script>
+//创建Vue实例,得到 ViewModel
+const app = new Vue({
+  el:"#app",
+  data: {
+    mes:"hiii",
+    book:[
+        {id:110,name:"我的世界",price:110},
+        {id:110,name:"爱与和平",price:130},
+        {id:110,name:"流浪利尔",price:78},
+        {id:110,name:"天天向上",price:149},
+    ]
+    },
+    computed: {
+        allPrice:function(){
+            let sum=0
+            for(let i=0;i<this.book.length;i++)
+            {
+              
+                
+               sum=sum+this.book[i].price
+            }
+            return sum
+        }
+    }
+  })
+</script>
+</body>
+
+</html>

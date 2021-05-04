@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+  <meta charset="UTF-8">
+  <title></title>
+</head>
+
+<body>
+
+  <script type="text/javascript">
+    isEmail('djkjk@qq.com')
+
+    function isEmail(email) {
+      let zhenze =
+        /^([a-zA-Z])([a-zA-Z0-9]+[_|\_|\.]?)*[a-zA-Z0-9]+@([a-zA-Z0-9]+[_|\_|\.]?)*[a-zA-Z0-9]+\.[a-zA-Z]{2,3}$/
+
+      if (!zhenze.test(email)) {
+        console.log('false')
+        return false
+      } else {
+        console.log('true')
+        return true
+      }
+    }
+  </script>
+</body>
+
+</html>

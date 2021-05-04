@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+  <style>
+    /* +为相邻的两个元素，~为全体元素 */
+    h1+p {
+      margin-top: 50px;
+    }
+
+    h1~p {
+      margin-top: 50px;
+    }
+
+    .box1,
+    .box2,
+    .box3 {
+      background-color: red;
+    }
+
+    /* .box1 + .box2{
+      margin-top: 30px;
+    } */
+
+    span~div {
+      margin-top: 30px;
+    }
+  </style>
+</head>
+
+<body>
+  <h1>我是一个标题</h1>
+  <p>我是段落1</p>
+  <p>我是段落2</p>
+  <p>我是段落3</p>
+  <p>我是段落4</p>
+  <p>我是段落5</p>
+
+
+  <span>666</span>
+  <div class="box1">1</div>
+  <div class="box2">2</div>
+  <div class="box3">3</div>
+</body>
+
+</html>

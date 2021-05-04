@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+</head>
+
+<body>
+  <main>
+    <span>我是小明</span>
+    <span>我是小李</span>
+    <span>我是小红</span>
+  </main>
+  <script>
+    //span标签替换成h1，描红，后面加上yangjie
+    //禁止贪婪后就可以每个分割成一个独立的
+    let name = document.querySelector('main')
+    let regs = /<span>([\s\S]+?)<\/span>/gi
+    // console.log(name.innerHTML.match(regs))
+    //一定要注意lastindex
+    // regs.lastIndex = 0
+    name.innerHTML = name.innerHTML.replace(regs, (v, p1) => {
+      return `<h1 style="color:red">${p1}-yangjie</h1>`
+    })
+  </script>
+
+</body>
+
+</html>

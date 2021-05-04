@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>类与类的继承</title>
+</head>
+
+<body>
+
+  <script>
+    class Person {
+      constructor(name) {
+        this.name = name
+        this.a=1
+      }
+      getname() {
+        console.log("姓名：" + this.name + "学号：" + this.id)
+      }
+      static add() {
+        return 1
+      }
+    }
+
+    Person.prototype.id = 123
+    const a = new Person('yangjie', 18)
+    a.getname()
+    console.log(a.id)
+
+
+    class child extends Person {
+      constructor(name) {
+        //只能在构造函数中出现一次
+        super(name).getname()
+        this.name = name
+      }
+      static count() {
+         return super.add()+1
+      }
+    }
+
+    const b = new child("小明")
+    console.log(child.count())
+    console.log(child.count())
+    console.log(child.count())
+  </script>
+
+</body>
+
+</html>

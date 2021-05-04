@@ -1,0 +1,31 @@
+.div1 {
+  width: 100%;
+  height: 100px;
+  background-color: red;
+}
+.div2 {
+  width: 100%;
+  height: 100px;
+  background-color: green;
+}
+.div3 {
+  width: 100%;
+  height: 100px;
+  background-color: palevioletred;
+}
+.div4 {
+  position: relative;
+  left:50px;
+  top: 50px;
+  width: 100px;
+  height: 100px;
+  background-color: purple;
+}
+.div5 {
+  width: 100px;
+  height: 100px;
+  background-color: blue;
+  position: absolute;
+  left: 50px;
+  top: 50px;
+}

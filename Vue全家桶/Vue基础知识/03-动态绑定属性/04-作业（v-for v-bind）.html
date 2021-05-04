@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <script src="../Js/vue.js"></script>
+
+    <style>
+        .red{
+            color: red;
+        }
+    </style>
+</head>
+
+<body>
+<div id ="app">
+  <ul>
+      <!-- <li v-for="(item,index) in mes"  @click="getindex(index)" v-bind:class="{red:item.isActive}">{{item.title}}</li> -->
+      <li v-for="(item,index) in mes":class="{red:currIndex===index}"  @click="getindex(index)" >{{item}}</li>
+  </ul>
+</div>
+
+<script>
+//创建Vue实例,得到 ViewModel
+const app = new Vue({
+  el:"#app",
+  data: {
+    mes:['天天向上','快乐大本营','奔跑吧兄弟','青春有你'],
+    // mes:[
+    //     {title:'天天向上',isActive:true},
+    //     {title:'快乐大本营',isActive:false},
+    //     {title:'奔跑吧兄弟',isActive:false},
+    //     {title:'青春有你',isActive:false},
+    // ],
+    //isActive:true
+
+    currIndex:0
+    },
+  methods: {
+      // getindex:function(index){
+      //     this.mes[index].isActive=true
+      //     for(let i=0;i<this.mes.length;i++)
+      //     {
+      //         if(i!=index)
+      //         {
+      //           this.mes[i].isActive=false
+      //         }
+      //     }    
+      // }
+      getindex:function(index){
+         this.currIndex=index
+      }
+    }
+  })
+</script>
+</body>
+
+</html>

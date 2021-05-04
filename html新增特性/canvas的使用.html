@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>canvas的使用</title>
+</head>
+
+<body>
+  <canvas id="canvas" width="200" height="100"></canvas>
+
+  <script>
+    let canvas = document.getElementById('canvas')
+    // 创建 context 对象
+    let cxt = canvas.getContext('2d')
+
+    //使用里面的方法绘制图形
+    cxt.fillStyle = "#FF0000"
+    cxt.fillRect(0, 0, 150, 75)
+
+   
+
+    //history对象类似与路由的返回和访问
+    // history.go(1)
+    // history.back()
+  </script>
+</body>
+
+</html>

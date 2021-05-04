@@ -1,0 +1,99 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+  <style>
+    body {
+      margin: 4px;
+      font-family: Helvetica;
+    }
+
+    @media screen and (max-width:768px) {
+      .mosonry {
+        column-count: 2;
+        column-gap: 0;
+      }
+    }
+
+    @media screen and (max-width:1024px) and (min-width:768px) {
+      .mosonry {
+        column-count: 4;
+        column-gap: 0;
+      }
+    }
+
+    @media screen and (max-width:1920px) and (min-width:1025px) {
+      .mosonry {
+        column-count: 8;
+        column-gap: 0;
+      }
+    }
+
+    @media screen and (min-width:1921px) {
+      .mosonry {
+        column-count: 8;
+        column-gap: 0;
+      }
+    }
+
+
+    /* .mosonry {
+      column-count: 8;
+      column-gap: 0;
+    } */
+
+    .item {
+      padding: 4px;
+      position: relative;
+      counter-increment: item-count;
+    }
+
+    .item img {
+      display: block;
+      width: 100%;
+      height: auto;
+    }
+
+    .item::after {
+      position: absolute;
+      left: 0;
+      height: 24px;
+      width: 24px;
+      top: 2px;
+      line-height: 24px;
+      background-color: black;
+      color: white;
+      content: counter(item-count);
+      text-align: center;
+    }
+
+  </style>
+</head>
+
+<body>
+
+  <div class="mosonry" id="mosonry"></div>
+
+</body>
+<script>
+  let el = document.getElementById('mosonry')
+  for (let index = 1; index < 60; index++) {
+    let node = document.createElement('div')
+    node.classList.add('item')
+
+    let node_img = document.createElement('img')
+    node_img.setAttribute('src', './img/waterfall/' + index + '.jpg')
+    node.appendChild(node_img)
+
+    el.appendChild(node)
+  }
+  // let reg = /["]*/g
+  // el.innerHTML=el.innerHTML.replace(reg,"")
+</script>
+
+
+
+</html>

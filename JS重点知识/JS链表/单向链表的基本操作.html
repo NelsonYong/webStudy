@@ -1,0 +1,211 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>单向链表</title>
+</head>
+
+<body>
+
+
+  <script>
+    class Node {
+      constructor(el) {
+        // 构造节点的值与节点的指针
+        this.el = el
+        this.next = null
+      }
+    }
+
+    class ListNode {
+      constructor() {
+        //构造单向链表的头指针与长度
+        this.head = null
+        this.length = 0
+      }
+
+      //尾插法
+      append(el) {
+        //新建一个节点
+        let node = new Node(el)
+        let current = null
+        //如果节点为空，证明链表为空，那么加入的节点就是head指向的第一个节点，即头节点
+        if (this.head == null) {
+          this.head = node
+        } else {
+          //新建的指针指向头指针
+          current = this.head
+
+          // 通过while,即指针的移动，当current.next为空，即当前指针指向的节点为未插入节点时的最后一个节点
+          while (current.next) {
+            current = current.next
+          }
+          //将节点插入current.next的节点中完成尾插法
+          current.next = node
+        }
+
+        this.length++
+      }
+
+
+      // 头插法
+      headAppend(el) {
+        //新建一个节点
+        let node = new Node(el)
+        if (this.head == null) {
+          this.head = node
+        } else {
+          let current = this.head
+          node.next = current
+          this.head = node
+        }
+        this.length++
+      }
+
+
+      //任意位置插入
+      insert(position, el) {
+
+        //判断要插入的位置是否在合理的范围
+        if (position >= 0 && position <= this.length) {
+          let node = new Node(el)
+
+          //新建两个指针
+          let current = this.head
+          let previous = null
+          let index = 0
+
+          //position 0的话就是头节点
+          if (position === 0) {
+            this.head = node
+          } else {
+            //通过index的累加移动pre 与current的指针, 3，那么while将执行2次，pre与current都到了第二个节点的位置
+            while (index++ < position) {
+              previous = current
+
+              // current指向第三个节点
+              current = current.next
+            }
+
+            //要插入的节点的指针指向current
+            node.next = current
+
+            // pre的指针指向node
+            previous.next = node
+          }
+          this.length++
+          return true
+
+        }
+        return false
+      }
+
+
+      //移除链表指定位置的元素
+
+      removeEl(position) {
+
+        if (position >= 0 && position < this.length && this.head != null) {
+          let current = this.head
+          let previous = null
+          let index = 0
+
+          //position 0的话就是头节点
+          if (position === 0) {
+            //头节点指向原头节点的指向的下一个节点
+            this.head = current.next
+
+          } else {
+            while (index++ < position) {
+
+              // 让指针进行移动，pre为待删元素的前一个指针，即pre指向待删元素的前一个元素，current也指向待删元素
+              previous = current
+              current = current.next
+            }
+            //pre的指针指向current指针，即待删元素指针的下一位，完成删除
+            previous.next = current.next
+          }
+
+          this.length--
+          return true
+
+        }
+
+        return null
+
+      }
+
+      //寻找元素下标
+
+      findIndex(el) {
+
+        //指向头节点
+        let current = this.head
+        let index = 0
+        while (current) {
+          if (el === current.el) {
+            //返回下标
+            return index
+          }
+          //遍历头节点
+          index++;
+          current = current.next
+        }
+
+        return -1
+      }
+
+      //删除指定元素
+      removeAtEl(el) {
+
+        //获取元素下标
+        let index = this.findIndex(el)
+
+        //通过下标删除
+        return this.removeEl(index)
+      }
+
+
+      //链表转数组
+      toArray() {
+        let arr = {
+          index: [],
+          data: []
+        }
+        let current = this.head
+        let index = 0
+        while (current) {
+          arr.index.push(index)
+          arr.data.push(current.el)
+          index++
+          current = current.next
+        }
+
+        return arr
+      }
+
+    }
+
+    let L1 = new ListNode()
+    L1.headAppend(2)
+    L1.headAppend(3)
+    L1.headAppend(4)
+
+    L1.append(5)
+    L1.append(6)
+    L1.append(7)
+
+    // L1.insert(6, 100)
+
+    // L1.removeEl(2)
+    // console.log(L1.findIndex(3))
+    // console.log(L1.removeAtEl(3))
+    console.table(L1.toArray())
+    console.log(L1)
+  </script>
+
+</body>
+
+</html>

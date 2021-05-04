@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>伪元素选择器</title>
+  <style>
+    /* 第一个单词 */
+    p::first-letter{
+      color: red;
+      font-size: 35px;
+    }
+
+    /* 选中的元素 */
+    p::selection{
+      color: blue;
+    }
+    p:hover{
+      background-color: cornflowerblue;
+    }
+
+    p::first-line{
+      background-color: red;
+    }
+
+    div::before{
+      content: "唐代诗人";
+    }
+
+    div::after{
+      content: "的诗";
+    }
+
+  </style>
+</head>
+
+<body>
+
+  <h1>李白的诗词</h1>
+  <p>行路难，行路难，多歧路今安在</p>
+  <p>长风破浪会有时</p>
+  <p>直挂云帆济沧海</p>
+  <div>李白</div>
+</body>
+
+</html>

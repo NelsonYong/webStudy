@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>mode</title>
+</head>
+
+<body>
+  <div id="app">
+    <cpn></cpn>
+
+  </div>
+  <template id="cpn">
+    <div>
+      <h1>{{title}}</h1>
+      <h1>{{mes1}}</h1>
+      <h1>{{mes}}</h1>
+    </div>
+  </template>
+
+  <!-- 第一种分离写法 -->
+  <!-- <script type="text/x-template" id="cpn">
+  <div>
+    <h1>你好啊，哈哈哈</h1>
+    <h1>你好啊，嘻嘻嘻</h1>
+    <h1>你好啊，噜噜噜</h1>
+  </div>
+  </script> -->
+
+
+  <!-- 第二种分离写法 -->
+
+  <script src="../Js/vue.js"></script>
+  <script>
+    Vue.component('cpn', {
+      template: '#cpn',
+      data() {
+        return {
+          title: '标题名称：test1',
+          mes1: '你好呀，嘻嘻嘻'
+
+        }
+      }
+    })
+
+    const app = new Vue({
+      el: '#app', //管理元素
+      data: {
+        mes: '666'
+      }
+    })
+  </script>
+</body>
+
+</html>

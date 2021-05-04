@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>mode</title>
+</head>
+<body>
+<!-- v-if 与v-show的区别是，v-if条件不成立直接删除了当前标签元素不存在浏览器上，v-show只是加了一个行内隐藏样式，实际上还是存在在浏览器上的 -->
+<!-- 开发中，当显示和隐藏频繁切换的时候用v-show   当只切换一次的时候，用v-if -->
+
+  <!-- 为了防止组件的复用，加上key那么vue在渲染的时候，就会判断两个key是否一样，一样就复用，不一样就重新渲染一个新的input框 -->
+<div id="app">
+  <span v-if="type==1">
+    <label>用户名：</label>
+    <input type="text" placeholder="请输入你的账号" key="username">
+  </span>
+  <span v-else>
+    <label>邮箱名：</label>
+    <input type="text" placeholder="请输入你的邮箱" key="email">
+  </span>
+  <button @click="Type">切换类型</button>
+</div>
+
+<script src="../Js/vue.js"></script>
+
+<script>
+  const app= new Vue({
+    el:'#app',//管理元素
+    data:{
+      k:'666',
+      type:1
+    },
+    methods: {
+      Type(){
+        if(this.type==1){
+          this.type=0
+        }else{
+          this.type=1
+        }
+      }
+    }
+  })   
+</script>
+</body>
+</html>

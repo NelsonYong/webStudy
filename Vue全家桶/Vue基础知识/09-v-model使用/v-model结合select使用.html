@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>mode</title>
+</head>
+<body>
+
+  <!-- 数据的双向绑定   单选-->
+<!-- <div id="app">
+<select name="hobies" id="hobies"  v-model="mes">
+  <option value="苹果">苹果</option>
+  <option value="香蕉">香蕉</option>
+  <option value="橘子">橘子</option>
+  <option value="梨子">梨子</option>
+</select>
+<h2>您选择的是:{{mes}}
+ <ul><li v-for="item in mes">{{item}}</li></ul>
+ </div> -->
+
+
+ <!-- 拉选 -->
+ <!-- <div id="app">
+<select name="hobies"  v-model="fruits" multiple>
+  <option value="苹果">苹果</option>
+  <option value="香蕉">香蕉</option>
+  <option value="橘子">橘子</option>
+  <option value="梨子">梨子</option>
+</select>
+<h2>您选择的是:{{fruits}}
+ </div> -->
+
+ <div id="app">
+   <label v-for="(item,index) in hob":for="item">
+     <!-- :是绑定value的意思 -->
+     <input type="checkbox":value="item" :id="item" v-model="hob1">{{item}}
+   </label>
+   <h1>{{hob1}}</h1>
+ </div>
+
+
+<script src="../Js/vue.js"></script>
+<script>
+  const app= new Vue({
+    el:'#app',//管理元素
+    data:{
+      mes:'苹果',
+      fruits:[],
+      hob:['篮球','足球','乒乓球','羽毛球','高尔夫球','台球'],
+      hob1:[]
+    }
+  })   
+</script>
+</body>
+</html>

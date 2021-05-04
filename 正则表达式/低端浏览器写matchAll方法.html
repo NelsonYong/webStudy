@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+</head>
+
+<body>
+
+</body>
+
+<script>
+  String.prototype.matchAll = function (regs) {
+    let res = this.match(regs)
+    if (res) {
+      let str = this.replace(res[0], "@".repeat(res[0].length))
+      let match = str.matchAll(regs) || []
+      return [res, ...match]
+    }
+  }
+
+  let data = "yangyyjie"
+  let list = []
+  for (const iterator of data.matchAll(/(y+)/i)) {
+    list.push(iterator[1])
+  }
+  console.log(list)
+</script>
+
+</html>

@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+</head>
+
+<body>
+
+
+  <script>
+    let obj = {
+      name: 'yangjie',
+      age: 18
+    }
+
+    //声明一个对象
+    //let newobj = obj
+    //newobj.name = 'lilei'
+    //console.log(obj) //obj.name='lilei'
+    //console.log(newobj) //newobj.namm='lilei'
+
+    //会发现原来的对象改变影响了赋值过来的对象
+    //使用assign可以避免这个问题，这是一个浅拷贝
+    let b = Object.assign({}, obj)
+    b.name = ' lilei'
+    console.log(b, obj) //'lilei'  'yangjie'
+
+    //不能进行深层拷贝，如 obj={b:{a:3},c:{b,4}}
+  </script>
+
+</body>
+
+</html>

@@ -1,0 +1,11 @@
+"use strict";
+Object.defineProperty(exports, "__esModule", { value: true });
+var UserInfo_1 = require("./modules/UserInfo");
+var user = new UserInfo_1.User(1, '小明', 18);
+console.log(UserInfo_1.UserModel.add(user));
+user = new UserInfo_1.User(2, '小红', 18);
+console.log(UserInfo_1.UserModel.add(user));
+user = new UserInfo_1.User(3, '小黑', 18);
+console.log(UserInfo_1.UserModel.add(user));
+console.log(UserInfo_1.UserModel.updata(user, 2));
+console.log(UserInfo_1.UserModel.getData());

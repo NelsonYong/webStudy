@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+  <style>
+    body {
+      margin: 4px;
+      font-family: Helvetica;
+    }
+
+    .mosonry {
+      display: flex;
+      flex-direction: column;
+      flex-wrap: wrap;
+      height: 5000px;
+    }
+
+    .item {
+      position: relative;
+      width: 20%;
+      padding: 2px;
+      /* box-sizing: border-box; */
+    }
+
+    .item img {
+      display: block;
+      width: 100%;
+      height: auto;
+    }
+  </style>
+</head>
+
+<body>
+  <div class="mosonry" id="mosonry"></div>
+</body>
+
+<script>
+  let el = document.getElementById('mosonry')
+  for (let index = 1; index < 60; index++) {
+    let node = document.createElement('div')
+    node.classList.add('item')
+
+    let node_img = document.createElement('img')
+    node_img.setAttribute('src', './img/waterfall/' + index + '.jpg')
+    node.appendChild(node_img)
+
+    el.appendChild(node)
+  }
+</script>
+
+</html>

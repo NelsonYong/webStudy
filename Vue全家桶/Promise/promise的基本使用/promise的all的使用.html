@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+</head>
+<body>
+  <script>
+  
+    // $.ajax({
+    //   url:'',
+    //   success:function(){
+    //     console.log('结果2')
+    //   }
+    // })
+
+    //当需要拿到两个结果再执行的时候，用promise.all
+
+  Promise.all([
+    // new Promise((resolve,reject)=>{
+    //   $.ajax({
+    //   url:'url2',
+    //   success:function(data){
+    //     resolve(data)
+    //   }
+    // })   
+    // }),
+
+    // new Promise((resolve,reject)=>{
+    //   $.ajax({
+    //   url:'url1',
+    //   success:function(data){
+    //     resolve(data)
+    //   }
+    // })   
+    // })
+
+    new Promise((resolve,reject)=>{
+    setTimeout(()=>{
+      resolve('666')
+    },1000)
+    }),
+    new Promise((resolve,reject)=>{
+    setTimeout(()=>{
+      resolve('777')
+    },1000)
+    }),
+
+  ]).then(res=>{
+    //返回一个数组
+    // res[0]
+    // res[1]
+    console.log(res[0],res[1])
+  })
+
+
+  </script>
+  
+</body>
+</html>

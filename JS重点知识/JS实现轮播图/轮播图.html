@@ -1,0 +1,297 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+
+  <style>
+    #parent {
+      position: relative;
+      margin: 50px auto;
+      padding: 0;
+      width: 500px;
+      height: 309px;
+    }
+
+    #uls {
+      position: relative;
+      margin: 0;
+      padding: 0;
+      width: 500px;
+      height: 309px;
+      overflow: hidden;
+    }
+
+    #img_ul {
+      position: absolute;
+      margin: 0;
+      padding: 0;
+      left: 0;
+      top: 0;
+      width: 3000px;
+      list-style: none;
+    }
+
+    #img_ul li {
+      float: left;
+      margin: 0;
+      padding: 0;
+      width: 500px;
+      height: 309px;
+    }
+
+    #img_ul li img {
+      width: 500px;
+      height: 309px;
+    }
+
+    #litCir_ul {
+      position: absolute;
+      margin: 0;
+      padding: 0;
+      right: 10px;
+      bottom: 10px;
+      list-style: none;
+    }
+
+    #litCir_ul li {
+      margin: 0;
+      padding: 0;
+      float: left;
+      width: 20px;
+      height: 20px;
+      text-align: center;
+      line-height: 20px;
+      border-radius: 50%;
+      margin-left: 10px;
+      cursor: pointer;
+    }
+
+    li.active {
+      background-color: white;
+    }
+
+    li.quiet {
+      background-color: #1e90ff;
+    }
+
+    #buttons {
+      margin: 0;
+      padding: 0;
+      display: none;
+    }
+
+    #buttons span {
+      position: absolute;
+      width: 40px;
+      height: 40px;
+      top: 50%;
+      margin-top: -20px;
+      line-height: 40px;
+      text-align: center;
+      font-weight: bold;
+      font-family: Simsun;
+      font-size: 30px;
+      border: 1px solid #fff;
+      opacity: 0.3;
+      cursor: pointer;
+      color: #fff;
+      background: black;
+    }
+
+    #left {
+      left: 5px;
+    }
+
+    #right {
+      left: 100%;
+      margin-left: -45px;
+    }
+  </style>
+</head>
+
+<body>
+  <div id="parent">
+    <div id="uls">
+      <ul id="img_ul">
+        <li><img src="./img/fan1.jpg" /></li>
+        <li><img src="./img/fan2.jpg" /></li>
+        <li><img src="./img/fan3.jpg" /></li>
+        <li><img src="./img/fan4.jpg" /></li>
+        <li><img src="./img/fan5.jpg" /></li>
+      </ul>
+      <ul id='litCir_ul'></ul>
+    </div>
+    <div id="buttons">
+      <span id="left">&lt;</span>
+      <span id="right">&gt;</span>
+    </div>
+  </div>
+</body>>
+
+<script>
+  window.onload = function () {
+    /*获取HTML中的对象*/
+    var parent = document.getElementById("parent");
+    var img_ul = document.getElementById("img_ul");
+    var litCir_ul = document.getElementById("litCir_ul");
+    var buttons = document.getElementById("buttons");
+    var cLis = litCir_ul.children;
+
+    var len = img_ul.children.length; //图片张数
+    var width = parent.offsetWidth; //每张图片的宽度
+    var rate = 15; //一张图片的切换速度，单位为px
+    var times = 1; //切换速度的倍率
+    var gap = 4000; //自动切换间隙，单位为毫秒
+    var timer = null; //初始化一个定时器
+    var picN = 0; //当前显示的图片下标
+    var cirN = 0; //当前显示图片的小圆点下标
+    var now;
+    var then = Date.now();
+    var temp;
+
+    /*克隆第一个li到列表末*/
+    img_ul.appendChild(img_ul.children[0].cloneNode(true));
+
+    for (var i = 0; i < len; i++) {
+      var a_li = document.createElement("li");
+      a_li.className = 'quiet';
+      litCir_ul.appendChild(a_li);
+    }
+    litCir_ul.children[0].className = "active";
+
+    function autoRoll() {
+      now = Date.now();
+      var t = now - then;
+      if (t >= gap) {
+        if (Roll(-(picN + 1) * width)) {
+          picN++;
+          cirN++;
+          then = Date.now();
+        }
+        for (var i = 0; i < len; i++) {
+          cLis[i].className = "quiet";
+        }
+        if (cirN == len) {
+          cirN = 0;
+        }
+        cLis[cirN].className = "active";
+        if (picN >= len) {
+          img_ul.style.left = 0;
+          picN = 0;
+        }
+      }
+      timer = requestAnimationFrame(autoRoll);
+    }
+    autoRoll();
+
+    parent.onmouseover = function () {
+      cancelAnimationFrame(timer);
+      buttons.style.display = 'block';
+
+    }
+    parent.onmouseout = function () {
+      timer = requestAnimationFrame(autoRoll);
+      buttons.style.display = 'none';
+    }
+
+    for (var i = 0; i < len; i++) {
+      cLis[i].index = i;
+      cLis[i].onmouseover = function () {
+        var flag = 0;
+        var rollN = this.index;
+        for (var j = 0; j < len; j++) {
+          cLis[j].className = "quiet";
+        }
+        this.className = "active";
+        temp = cirN; //当前active点
+        picN = cirN = this.index;
+        console.log('this.index:' + this.index);
+        times = Math.abs(this.index - temp); //距离上个小圆点的距离
+        if (times == 0) {
+          return;
+        }
+        console.log('times:' + times);
+        rate = rate * times; //根据距离改变切换速率
+
+        function rollTo() {
+          cancelAnimationFrame(img_ul.timer);
+          if (Roll(-rollN * width)) {
+            flag++;
+            if (flag == times) {
+              cancelAnimationFrame(img_ul.timer);
+              rate = 15;
+              return;
+            }
+          }
+          img_ul.timer = requestAnimationFrame(rollTo);
+        }
+        rollTo();
+      }
+    }
+
+    /*上一张*/
+    buttons.children[0].onclick = previous;
+    /*下一张*/
+    buttons.children[1].onclick = next;
+
+    function next() {
+      cancelAnimationFrame(img_ul.timer);
+      if (Roll(-(picN + 1) * width)) {
+        cancelAnimationFrame(img_ul.timer);
+        picN++;
+        cirN++;
+        for (var i = 0; i < len; i++) {
+          cLis[i].className = "quiet";
+        }
+        if (cirN == len) {
+          cirN = 0;
+        }
+        cLis[cirN].className = "active";
+        if (picN >= len) {
+          img_ul.style.left = 0;
+          picN = 0;
+        }
+        return;
+      }
+      img_ul.timer = requestAnimationFrame(next);
+    }
+
+    function previous() {
+      if (picN <= 0) {
+        img_ul.style.left = -len * width + "px";
+        picN = len;
+      }
+      cancelAnimationFrame(img_ul.timer);
+      if (Roll(-(picN - 1) * width)) {
+        cancelAnimationFrame(img_ul.timer);
+        picN--;
+        cirN--;
+        for (var i = 0; i < len; i++) {
+          cLis[i].className = "quiet";
+        }
+        if (cirN < 0) {
+          cirN = len - 1;
+        }
+        cLis[cirN].className = "active";
+        return;
+      }
+      img_ul.timer = requestAnimationFrame(previous);
+    }
+
+    function Roll(distance) {
+      var speed = img_ul.offsetLeft < distance ? rate : (0 - rate);
+      img_ul.style.left = img_ul.offsetLeft + speed + "px";
+      var leave = distance - img_ul.offsetLeft;
+      if (Math.abs(leave) <= Math.abs(speed)) {
+        img_ul.style.left = distance + "px";
+        return 1; //切换完一张图片
+      }
+      return 0;
+    }
+  }
+</script>
+
+</html>

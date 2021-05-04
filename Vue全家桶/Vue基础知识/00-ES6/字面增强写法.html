@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <script src="../Js/vue.js"></script>
+</head>
+
+<body>
+
+<script>
+const name = '666'
+const age = 18
+//1、属性增强写法
+//ES5写法
+// const obj={
+//     name:name,
+//     age:age
+// }
+// console.log(obj);
+
+
+//ES5写法
+const obj = {
+
+    name,
+    age
+}
+console.log(obj);
+
+
+//2、函数增强写法
+
+//ES5写法
+// const func={
+
+//     run:function(){
+//         console.log('555');
+//     },
+//     run1:function(){
+//         console.log('666');
+//     }
+// }
+//console.log(func.run());
+
+ES6写法
+const func={
+
+    run(){
+        console.log('555');
+    },
+    run1(){
+    }
+}
+
+console.log(func.run());
+</script>
+</body>
+
+</html>

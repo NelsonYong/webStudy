@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+</head>
+
+<body>
+  <script>
+    //网络请求：aaa(自己处理)
+    //处理： aaa拼接上111(自己处理)
+    //处理： aaa拼接上222(自己处理)
+
+    new Promise((resolve, reject) => {
+      setTimeout(() => {
+        resolve('aaa')
+        reject('error')
+      }, 1000)
+    }).then(data => {
+      //自己处理
+      console.log(data, '第一层处理代码')
+      return data + '111'
+    }).then(data => {
+      console.log(data, '第二层处理代码')
+      return data + '222'
+
+      //每一层加入可识别异常错误
+      throw 'error'
+    }).then(data => {
+      console.log(data, '三层处理代码')
+    }).catch(err=>{console.log(err)})
+  </script>
+
+</body>
+
+</html>

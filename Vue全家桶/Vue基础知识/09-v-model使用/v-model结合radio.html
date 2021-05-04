@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>mode</title>
+</head>
+<body>
+<div id="app">
+
+<label for="nan">
+  <input type="radio" value="男"  v-model="mes">男
+</label>
+<label for="nv">
+  <input type="radio" value="女"   v-model="mes">女
+</label>
+<h2>您选择的是:{{mes}}</h2>
+
+</div>
+
+
+<script src="../Js/vue.js"></script>
+<script>
+  const app= new Vue({
+    el:'#app',//管理元素
+    data:{
+      mes:'男'
+    }
+  })   
+</script>
+</body>
+</html>

@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+</head>
+
+<body>
+
+  <script>
+    let str = "yangjie"
+    console.log(str.match(/\w/g))
+
+    let patter = /\w/g
+    //lastIndex可以获取下一个字符的index
+    // console.log(patter.lastIndex)
+    // console.log(patter.exec(str))
+    // console.log(patter.lastIndex)
+
+    //如果想保存信息
+    while((res=patter.exec(str))){
+      console.log(res)
+    }
+  </script>
+</body>
+
+</html>

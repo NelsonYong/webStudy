@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+</head>
+
+<body>
+
+  <main>
+    <a id="yang" href="http://www.yangjie.com">杨杰</a>
+    <a name="kaiyuan" id="kaiyuan" href="http://kaiyuan.com">开源</a>
+  </main>
+
+</body>
+<script>
+  let el = document.querySelector('main')
+  let regs = /(<a.*href=['"])(http)(:\/\/)(www\.)?(\w+\.\w+)/ig
+  //console.log(el.innerHTML.match(regs))
+  el.innerHTML = el.innerHTML.replace(regs, (v, ...args) => {
+    args[1] = args[1] + "s"
+    args[3] = args[3] || "www."
+    return args.splice(0, 5).join('')
+  })
+  console.log(el)
+</script>
+
+</html>

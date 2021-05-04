@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>闭包问题</title>
+</head>
+
+<body>
+
+  <script>
+    //闭包
+    //函数内嵌套函数
+    //函数外部可以访问函数内部的值
+    //参数和变量不会因为执行完函数被回收
+
+    //实现闭包的方法-第一种
+    (function () {
+      var a = 1
+      Person = function (val) {
+        a = val
+      }
+      Person.prototype.setname = function (val) {
+        a = val
+      }
+      Person.prototype.getname = function () {
+        return a++
+      }
+    })()
+
+    var test = new Person(6)
+    test.setname(10)
+    console.log(test.getname()) //10
+    console.log(test.getname()) //11
+    //变量不会被回收
+
+
+    //访问内部数据-第二种
+    var Obj = (function () {
+      var a = 1
+
+      function bbb() {
+        a += 1
+        return a
+      }
+
+      function ccc() {
+        a += 2
+        return a
+      }
+      return {
+        b: bbb,
+        c: ccc
+      }
+
+    })()
+
+    console.log(Obj.b())
+    console.log(Obj.c())
+  </script>
+
+</body>
+
+</html>

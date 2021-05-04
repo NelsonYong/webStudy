@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+</head>
+
+<body>
+
+  <div class="content" id="info">
+    <div>杨杰简介</div>
+    <h1>姓名<div>666</div></h1>
+    <h2></h2>
+    <h3>你那里就是滴哦撒活动</h3>
+  </div>
+
+  <script>
+    let str = document.getElementById('info')
+    let com = /<(h[1-6])>[\s\S]*<\/\1>/gi
+    console.log(str.innerHTML.match(/<(h[1-6])>[\s\S]*<\/\1>/gi))
+    str.innerHTML = str.innerHTML.replace(com, "")
+  </script>
+
+</body>
+
+</html>

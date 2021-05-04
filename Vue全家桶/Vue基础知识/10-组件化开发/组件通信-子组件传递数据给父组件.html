@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>mode</title>
+</head>
+<body>
+<div id="app">
+  <cpn @item-click="mainclick"></cpn>
+</div>
+
+<template id="cpn">
+  <div>
+    <button v-for="(item,index) in cmes" @click="btnClick(item)">{{item.name}}</button>
+  </div>
+</template>
+
+
+<script src="../Js/vue.js"></script>
+<script>
+  const cpn = {
+        template:'#cpn',
+        data () {
+          return {
+            cmes:[
+              {id:'1',name:'家具1'},
+              {id:'2',name:'家具2'},
+              {id:'3',name:'家具3'},
+              {id:'4',name:'家具4'},
+            ]
+          }
+        },
+        methods: {
+          btnClick(item){
+            this.$emit('item-click',item)
+          }
+        }
+      }
+
+  const app= new Vue({
+    el:'#app',//管理元素
+    data:{
+      mes:'666'
+    },
+    components: {
+      cpn
+    },
+    methods: {
+      mainclick(item){
+        console.log(item);
+      }
+    }
+  })   
+</script>
+</body>
+</html>

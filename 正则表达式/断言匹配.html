@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+</head>
+
+<body>
+  <p>杨杰不断学习，以至于后期开发了杨杰教程</p>
+</body>
+
+<script>
+  //断言符号(?=n),可以理解为条件判断语句，判断其后紧接指定字符串是否为指定的n
+  let el = document.querySelector('p')
+  let regs = /(杨杰)(?=教程)/gi
+  el.innerHTML = el.innerHTML.replace(regs, "<a href='https://yangjie.com'>$1</a>")
+
+
+
+  let data = "yangjie7777huidsahdui01547"
+  //匹配前面是yangjie的数字
+  console.log(data.match(/(?<=yangjie)\d+/i))
+
+
+  //?!n后面不是的字符串
+  //?<!n前面不是接n的字符串
+</script>
+
+</html>

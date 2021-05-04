@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset=utf-8 />
+    <title>css聊天框</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+        }
+
+        .timi {
+            position: relative;
+            max-width: 260px;
+            padding: 10px 6px;
+            border: 2px solid #ccc;
+            margin-top: 50px;
+            margin-left: 50px;
+            border-radius: 5px;
+            word-break: break-all;
+        }
+
+        .bot {
+            position: absolute;
+            top: 15px;
+            left: -20px;
+            border-width: 10px;
+            border-style: solid;
+            border-color: transparent #ccc transparent transparent;
+        }
+
+        .top {
+            position: absolute;
+            top: 15px;
+            left: -16px;
+            border-width: 10px;
+            border-style: solid;
+            border-color: transparent #fff transparent transparent;
+        }
+    </style>
+</head>
+
+<body>
+
+    <div class="chat">
+        <div class="bot"></div>
+        <div class="top">  同乡您好，很高兴能够遇到你！可以跟我聊聊吗？</div>
+      
+    </div>
+
+</body>
+
+</html>

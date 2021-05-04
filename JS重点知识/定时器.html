@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>定时器</title>
+</head>
+<body>
+
+  <div class="clock"><h1>时间</h1><h1 id="target"></h1></div>
+  <button onclick="btn()">3s后开始输出内容</button>
+
+  <script>
+    let time=document.getElementById('target')
+    
+    function btn(){
+      setTimeout(()=>{
+
+        const test=new Date()
+        time.innerHTML="北京时间"+test
+
+      },3000)
+    }
+  </script>
+  
+</body>
+</html>

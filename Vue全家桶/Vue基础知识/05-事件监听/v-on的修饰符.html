@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>mode</title>
+</head>
+<body>
+<!-- .stop当div以及div里面有点击监听的时候，加stop修饰符可以使得只让当前点击的事件有效，阻止了同一层级的点击 -->
+<!-- <div id="app" @click="divClick">
+  <button @click.stop="btnClick">提交</button>
+</div> -->
+
+<!-- .prevent 当表单提交的时候，加此修饰符，可以阻止表单的提交，只是触发点击事件，让数据在js中处理提交 -->
+<!-- <div id="app" @click="divClick">
+  <input @click.prevent="submit" type="submit" value="提交"/>
+</div> -->
+
+<!-- 监听键帽 -->
+<div id="app">
+  <input type="text" @keyup.enter="divClick">
+
+
+  
+  <!-- once修饰符只提交一次按钮点击事件 -->
+  <button @click.once="btnClick">提交</button>
+</div>
+
+
+
+<script src="../Js/vue.js"></script>
+
+<script>
+  const app= new Vue({
+    el:'#app',//管理元素
+    data:{
+      k:'666'
+    },
+    methods: {
+      divClick(){
+        console.log('divclick')
+      },
+      btnClick(){
+        console.log('btnClick')
+      }  
+    }
+  })   
+</script>
+</body>
+</html>

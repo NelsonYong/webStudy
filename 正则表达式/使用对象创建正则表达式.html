@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+  <style>
+    .active {
+      color: greenyellow;
+    }
+  </style>
+</head>
+
+<body>
+
+  <!-- 检测div里面的内容，符合的内容高亮显示 -->
+  <div class="content">
+    yangjie
+  </div>
+
+  <script>
+    let con = prompt("请输入你的内容", "支持正则")
+    let reg = new RegExp(con, "g")
+    let div = document.querySelector('div')
+    div.innerHTML = div.innerHTML.replace(reg, search => {
+      return `<span style="color:red">${search}</span>`
+    })
+    // let str="yhdjsak"
+    // let a="a"
+    // //第一个是检测的字符，第二个是全局查找
+    // let reg = new RegExp(a,'g')
+    // console.log(reg.test(str))
+  </script>
+
+</body>
+
+</html>

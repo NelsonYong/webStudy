@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+</head>
+
+<body>
+
+
+
+  <script>
+    iphone = `
+    (010)-99999
+    (020)-888888
+    `
+
+    let regs = /\((\d+)\)-(\d+)/g
+    //console.log(iphone.match(regs))
+    let data = iphone.trim().replace(regs, "$1-$2").split(/\n/)
+    console.log(data)
+
+
+    let name = "=yangjie="
+    //$&就是它本身的匹配内容  $`是匹配内容的前面，$'是匹配内容的后面
+    console.log(name.replace(/yangjie/, "$`"))
+  </script>
+
+</body>
+
+</html>

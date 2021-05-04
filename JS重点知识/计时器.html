@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>计时器的实现</title>
+</head>
+
+<body>
+
+  <div class="clock">
+    <h1>当前时间：</h1>
+    <h1 id="target"></h1>
+  </div>
+  <button class="btn" onclick="btn()">开始计时</button>
+  <button class="btn" onclick="btn1()">停止计时</button>
+
+
+  <script>
+    let test = document.getElementById('target')
+    let count = 0
+    test.innerHTML = count
+    let myvar
+
+    function btn(flag = false) {
+
+      myvar = setInterval(() => {
+        count += 1
+        test.innerHTML = count
+      }, 1000)
+    }
+
+    function btn1() {
+      clearInterval(myvar)
+    }
+  </script>
+</body>
+
+</html>

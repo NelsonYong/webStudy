@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+</head>
+
+<body>
+  <script>
+    //y是一直连续的匹配，中间有不匹配的直接停止，g模式也是连续匹配，但不会因为中间有不匹配的而停止
+
+    let str = "yayngjie"
+    let num = []
+    console.log(str.match(/y/yg))
+
+    let str1 = "的撒互动:111111,222222,33333254156的年岁都会奴家收到你发"
+    let patter = /(\d+),?/y
+    let p = /\d+/g
+    patter.lastIndex = 5
+    // console.log(patter.exec(str1))
+    // while ((res = patter.exec(str1))) {
+    //   console.log(res)
+    //   num.push(res[0])
+    //   console.log(num)
+    // }
+
+    let data = str1.match(p).map(v => {
+      let num = v
+      return {
+        num
+      }
+    })
+    console.log(data)
+  </script>
+</body>
+
+</html>

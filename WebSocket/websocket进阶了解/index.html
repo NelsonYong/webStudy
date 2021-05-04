@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+  <style>
+    .alert {
+      font-size: 5px;
+      color: blueviolet;
+    }
+  </style>
+</head>
+
+<body>
+  <div id="content">
+    <h1>聊天室</h1>
+  </div>
+  <input type="text" id="inp">
+  <button onclick="send()">发送消息</button>
+
+
+  <script>
+    var content = document.getElementById('content');
+    let ul_;
+    var inputNode = document.getElementById('inp')
+
+    let socket = new WebSocket('ws://localhost:3000');
+
+    //打开连接
+    socket.addEventListener('open', function (event) {
+      console.log('连接服务器成功')
+      creteAlert()
+      ul_ = document.getElementById('msg')
+    });
+
+
+    //监听数据
+    socket.addEventListener('message', function (event) {
+
+
+
+      console.log('来着服务器的消息 ', event);
+      ul_.innerHTML += "<li>" + event.data + "</li>"
+
+
+    });
+
+
+    function creteAlert() {
+
+      const span = document.createElement('span')
+      span.className = "alert"
+      span.innerHTML =  "加入该聊天室"
+      const ul = document.createElement('ul')
+      ul.id = 'msg'
+
+      content.appendChild(span)
+      content.appendChild(ul)
+    }
+
+    function send() {
+      socket.send(inputNode.value)
+    }
+  </script>
+
+</body>
+
+</html>

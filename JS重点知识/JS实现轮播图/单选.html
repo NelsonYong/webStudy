@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+</head>
+
+<body>
+  <div id="change">
+    <input type="radio" name="girl" value="user" id="girl"><label for="girl">用户</label>
+    <input type="radio" name="girl" value="sh" id="boy" checked="checked"><label for="boy">商家</label>
+    <input type="radio" name="girl" value="ad" id="boy" checked="checked"><label for="boy">管理员</label>
+    <button onclick="push()" id="btn">提交</button>
+  </div>
+  <script>
+    window.onload = function () {
+      let obj = document.getElementById('change')
+      let btn = document.getElementById('btn')
+      btn.push = function () {
+        obj.querySelectorAll('input').forEach(el => {
+          if (el.checked) {
+            alert(el.value)
+          }
+        });
+      }
+    }
+  </script>
+</body>
+
+</html>
+
+

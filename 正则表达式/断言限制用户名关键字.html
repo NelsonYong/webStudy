@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+</head>
+
+<body>
+
+  <input type="name" id="username">
+
+  <script>
+    let input = document.getElementById('username')
+    input.addEventListener('keyup', e => {
+      const val = e.target.value
+      let regs = /^(?!.*[杨杰].*).*/i
+      console.log(val.match(regs))
+    })
+  </script>
+
+</body>
+
+</html>

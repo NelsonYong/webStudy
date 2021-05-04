@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>mode</title>
+</head>
+
+<body>
+
+  <div id="app">
+
+    <cpn></cpn>
+
+  </div>
+
+  <script src="../Js/vue.js"></script>
+  <script>
+    //const cpnC = Vue.extend()
+
+
+    //语法糖写法，直接把需要添加的组件放到注册中即可（全局组件）
+    // Vue.component('my-cpn',{
+    //   template:  `<div>
+    //                <h1>你好啊，哈哈哈</h1>
+    //                <h1>你好啊，嘻嘻嘻</h1>
+    //                <h1>你好啊，噜噜噜</h1>
+    //              </div>`
+    // })
+
+
+
+    const app = new Vue({
+      el: '#app', //管理元素
+      data: {
+        mes: '666'
+      },
+      //语法糖注册局部组件
+      components: {
+        cpn: {
+          template: `<div>
+                 <h1>你好啊，哈哈哈</h1>
+                 <h1>你好啊，嘻嘻嘻</h1>
+                 <h1>你好啊，噜噜噜</h1>
+               </div>`
+        }
+      }
+
+    })
+  </script>
+</body>
+
+</html>
