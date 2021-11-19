@@ -10,19 +10,19 @@
 </template>
 
 <script lang="ts" setup>
-import { reactive, ref } from "@vue/reactivity";
+import { ref } from "@vue/reactivity";
 import { computed } from "vue";
 import { useYStore } from "../hooks";
 import { GET_DATA } from "../store/modules/user/constant";
 
-const { state: ydata, getters, commit, dispatch } = useYStore();
+const { state: ydata, getters, dispatch } = useYStore();
 const loginText = computed(() => {
   return getters["user/isLogin"];
 });
-const state = reactive({
-  count: 1,
-});
-const a = ref(1);
+
+console.log(ydata);
+
+const a = ref<number>(1);
 const reduce = () => {
   a.value--;
 };

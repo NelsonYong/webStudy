@@ -7,6 +7,7 @@ type GetGetters<Modules> = {
 // 对象为 {xxx:{xxx:...}}
 // 遍历到modules里面的对象
 type PGetters = GetGetters<typeof modules>;
+
 // 拼接类型
 type AddPrefix<P, K> = `${P & string}/${K & string}`;
 // 拼接第一层与第二层

@@ -3,6 +3,7 @@
     "target": "esnext",
     "module": "esnext",
     "moduleResolution": "node",
+    "noUnusedLocals": true,
     "strict": true,
     "jsx": "preserve",
     "sourceMap": true,
@@ -10,6 +11,7 @@
     "esModuleInterop": true,
     "lib": ["esnext", "dom"],
     "types": ["vite/client"]
+    // "allowJs": true
   },
   "include": [
     "src/**/*.ts",

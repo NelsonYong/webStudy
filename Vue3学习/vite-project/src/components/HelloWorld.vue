@@ -1,20 +1,29 @@
 <template>
   <h1>{{ msg }}</h1>
-  <button @click="state.count++">count is: {{ state.count }}</button>
-  <!-- <v-btn block> Block Button </v-btn> -->
+  <slot name="name" :state="state"></slot>
+  <slot :state="state"></slot>
+  <button @click="state.count++" :style="style">
+    count is: {{ state.count }}
+  </button>
 </template>
 
 <script lang="ts">
-import { defineComponent, reactive } from "vue";
+import { CSSProperties, defineComponent, reactive, ref } from "vue";
 export default defineComponent({
   props: {
     msg: String,
   },
+
   setup({ msg }) {
     const state = reactive({ count: 0 });
+    const style = ref<CSSProperties>({
+      backgroundColor: "red",
+    });
+
     return {
       state,
       msg,
+      style,
     };
   },
 });
