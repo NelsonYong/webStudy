@@ -1,9 +1,9 @@
-import user from "./modules/user";
-import play from "./modules/play";
+import test1 from "./modules/test2";
+import test2 from "./modules/test1";
 
 const modules = {
-  user,
-  play,
+  test1,
+  test2,
 };
 
 export default modules;

@@ -1,7 +1,7 @@
 import { userState } from "./state";
 
 const moduleGetters = {
-  play: ({ count }: userState): number => {
+  test1: ({ count }: userState): number => {
     return count;
   },
 };

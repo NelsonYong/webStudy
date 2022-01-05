@@ -1,6 +1,6 @@
 import { createStore } from "vuex";
 import modules from "./modules";
-import { userState } from "./modules/user/state";
+import { userState } from "./modules/test2/state";
 
 type State = {
   user: userState;
